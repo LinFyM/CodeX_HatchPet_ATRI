@@ -15,7 +15,7 @@ CELL_HEIGHT = 208
 RUNNING_LEFT_ROW = 2
 EDGE_MARGIN = 24
 MIN_FRAGMENT_PIXELS = 20
-FRAME_7_ARTIFACT_ZONES = ((18, 41, 27, 77), (168, 43, 174, 75))
+FRAME_7_ARTIFACT_ZONES = ((18, 39, 27, 80), (166, 40, 174, 77))
 
 
 def connected_components(alpha: Image.Image) -> list[tuple[int, tuple[int, int, int, int]]]:
