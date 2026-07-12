@@ -1,0 +1,6 @@
+# Local hatch-pet generation workspace and intermediates
+atri-pet-run/
+
+# macOS metadata
+.DS_Store
+

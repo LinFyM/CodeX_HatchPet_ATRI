@@ -1,0 +1,16 @@
+{
+  "ok": true,
+  "spriteVersionNumber": 2,
+  "run_dir": "/Users/zzc/Documents/DesktopPet/atri-pet-run",
+  "spritesheet": "/Users/zzc/Documents/DesktopPet/atri-pet-run/final/spritesheet-extended.webp",
+  "validation": "/Users/zzc/Documents/DesktopPet/atri-pet-run/final/validation-extended.json",
+  "chroma_despill": "/Users/zzc/Documents/DesktopPet/atri-pet-run/qa/chroma-despill-extended.json",
+  "contact_sheet": "/Users/zzc/Documents/DesktopPet/atri-pet-run/qa/contact-sheet-extended.png",
+  "direction_sheet": "/Users/zzc/Documents/DesktopPet/atri-pet-run/qa/look-directions.png",
+  "direction_semantics": "/Users/zzc/Documents/DesktopPet/atri-pet-run/qa/direction-semantics.json",
+  "blind_direction_validation": "/Users/zzc/Documents/DesktopPet/atri-pet-run/qa/direction-blind-validation.json",
+  "blind_review_resolution": "/Users/zzc/Documents/DesktopPet/atri-pet-run/qa/blind-review-resolution.json",
+  "continuity": "/Users/zzc/Documents/DesktopPet/atri-pet-run/qa/look-continuity.json",
+  "review": "/Users/zzc/Documents/DesktopPet/atri-pet-run/qa/review.json",
+  "package": "/Users/zzc/.codex/pets/atri"
+}
