@@ -7,7 +7,7 @@ import sys
 from collections import deque
 from pathlib import Path
 
-from PIL import Image
+from PIL import Image, ImageChops, ImageOps
 
 
 CELL_WIDTH = 192
@@ -77,11 +77,22 @@ def main() -> int:
                 if residue:
                     errors.append(f"running-left frame 7: {residue} residual alpha pixels in artifact zone={zone}")
 
+        running_right = image.crop(
+            (
+                column * CELL_WIDTH,
+                CELL_HEIGHT,
+                (column + 1) * CELL_WIDTH,
+                2 * CELL_HEIGHT,
+            )
+        )
+        if ImageChops.difference(frame, ImageOps.mirror(running_right)).getbbox() is not None:
+            errors.append(f"running-left frame {column}: does not mirror running-right counterpart")
+
     if errors:
         print("\n".join(errors), file=sys.stderr)
         return 1
 
-    print("PASS running-left frames contain no detached sprite fragments")
+    print("PASS running-left frames mirror running-right frames without detached fragments")
     return 0
 
 
