@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Reject detached sprite fragments near running-left frame boundaries."""
+"""Reject detached sprite fragments in running-left animation frames."""
 
 from __future__ import annotations
 
@@ -13,7 +13,6 @@ from PIL import Image
 CELL_WIDTH = 192
 CELL_HEIGHT = 208
 RUNNING_LEFT_ROW = 2
-EDGE_MARGIN = 24
 MIN_FRAGMENT_PIXELS = 20
 FRAME_7_ARTIFACT_ZONES = ((18, 39, 27, 80), (166, 40, 174, 77))
 
@@ -68,10 +67,8 @@ def main() -> int:
         )
         components = connected_components(frame.getchannel("A"))
         for size, bbox in components[1:]:
-            min_x, _, max_x, _ = bbox
-            near_edge = min_x <= EDGE_MARGIN or max_x >= CELL_WIDTH - 1 - EDGE_MARGIN
-            if size >= MIN_FRAGMENT_PIXELS and near_edge:
-                errors.append(f"running-left frame {column}: detached edge fragment size={size} bbox={bbox}")
+            if size >= MIN_FRAGMENT_PIXELS:
+                errors.append(f"running-left frame {column}: detached fragment size={size} bbox={bbox}")
 
         if column == 7:
             alpha = frame.getchannel("A")
@@ -84,7 +81,7 @@ def main() -> int:
         print("\n".join(errors), file=sys.stderr)
         return 1
 
-    print("PASS running-left frames contain no detached edge fragments")
+    print("PASS running-left frames contain no detached sprite fragments")
     return 0
 
 
