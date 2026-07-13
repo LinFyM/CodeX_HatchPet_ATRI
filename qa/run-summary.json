@@ -1,16 +1,42 @@
 {
   "ok": true,
   "spriteVersionNumber": 2,
-  "run_dir": "/Users/zzc/Documents/DesktopPet/atri-pet-run",
-  "spritesheet": "/Users/zzc/Documents/DesktopPet/atri-pet-run/final/spritesheet-extended.webp",
-  "validation": "/Users/zzc/Documents/DesktopPet/atri-pet-run/final/validation-extended.json",
-  "chroma_despill": "/Users/zzc/Documents/DesktopPet/atri-pet-run/qa/chroma-despill-extended.json",
-  "contact_sheet": "/Users/zzc/Documents/DesktopPet/atri-pet-run/qa/contact-sheet-extended.png",
-  "direction_sheet": "/Users/zzc/Documents/DesktopPet/atri-pet-run/qa/look-directions.png",
-  "direction_semantics": "/Users/zzc/Documents/DesktopPet/atri-pet-run/qa/direction-semantics.json",
-  "blind_direction_validation": "/Users/zzc/Documents/DesktopPet/atri-pet-run/qa/direction-blind-validation.json",
-  "blind_review_resolution": "/Users/zzc/Documents/DesktopPet/atri-pet-run/qa/blind-review-resolution.json",
-  "continuity": "/Users/zzc/Documents/DesktopPet/atri-pet-run/qa/look-continuity.json",
-  "review": "/Users/zzc/Documents/DesktopPet/atri-pet-run/qa/review.json",
-  "package": "/Users/zzc/.codex/pets/atri"
+  "spritesheet": "pet/spritesheet.webp",
+  "atlas": {
+    "columns": 8,
+    "rows": 11,
+    "cellWidth": 192,
+    "cellHeight": 208,
+    "populatedCells": 74,
+    "transparentRgbResiduePixels": 0
+  },
+  "running": {
+    "gait": "contact/down/passing/flight, then the opposite leg repeats the same four phases",
+    "rightEyeAnchorXRangePixels": 0.55,
+    "minimumCellEdgeMarginPixels": 5,
+    "leftFramesAreExactWholeFrameMirrors": true,
+    "mirrorTemporalOrderPreserved": true,
+    "legShadingMirroredWithCompleteBody": true
+  },
+  "jump": {
+    "phases": "crouch/launch/apex/descent/settle",
+    "alphaBottoms": [203, 196, 160, 203, 203]
+  },
+  "look": {
+    "directions": 16,
+    "clockwiseStepDegrees": 22.5,
+    "mirrorRegistrationOffsetPixels": [2, 0],
+    "mirrorContentExactAfterRegistration": true,
+    "continuityReviewRequired": false,
+    "continuityWarnings": []
+  },
+  "visualReview": "full-resolution final contact sheet, running body/leg details, direction sheet, and blind direction pairs inspected",
+  "validation": "qa/validation-extended.json",
+  "contact_sheet": "qa/contact-sheet-extended.png",
+  "direction_sheet": "qa/look-directions.png",
+  "direction_semantics": "qa/direction-semantics.json",
+  "direction_validation": "qa/direction-blind-validation.json",
+  "continuity": "qa/look-continuity.json",
+  "complete_atlas_validator": "qa/validate_pet_atlas.py",
+  "mirror_finalizer": "qa/enforce_whole_frame_mirrors.py"
 }
