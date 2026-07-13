@@ -17,7 +17,9 @@ RUNNING_RIGHT_ROW = 1
 MIN_FRAGMENT_PIXELS = 20
 FRAME_7_ARTIFACT_ZONES = ((18, 39, 27, 80), (166, 40, 174, 77))
 LOWER_LEG_START_Y = 175
-MIRRORED_CENTROID_TOLERANCE = 8.0
+FOOT_DIRECTION_START_Y = 170
+CONTACT_PHASE_OFFSET = 18.0
+MIN_OPPOSITE_PHASE_REDRAW_RATIO = 0.08
 
 
 def connected_components(alpha: Image.Image) -> list[tuple[int, tuple[int, int, int, int]]]:
@@ -69,6 +71,20 @@ def lower_leg_centroid_x(frame: Image.Image) -> float:
     return sum(xs) / len(xs)
 
 
+def pixel_difference_ratio(first: Image.Image, second: Image.Image, threshold: int = 8) -> float:
+    first_pixels = first.load()
+    second_pixels = second.load()
+    differing = 0
+    for y in range(first.height):
+        for x in range(first.width):
+            if any(
+                abs(a - b) > threshold
+                for a, b in zip(first_pixels[x, y], second_pixels[x, y])
+            ):
+                differing += 1
+    return differing / (first.width * first.height)
+
+
 def main() -> int:
     spritesheet = Path(sys.argv[1] if len(sys.argv) > 1 else "pet/spritesheet.webp")
     image = Image.open(spritesheet).convert("RGBA")
@@ -109,16 +125,31 @@ def main() -> int:
             errors.append(f"running-left frame {column}: does not mirror running-right counterpart")
 
     centroids = [lower_leg_centroid_x(frame) for frame in running_right_frames]
-    mirrored_centroid_sum = CELL_WIDTH - 1
-    for first_half_column in range(4):
-        second_half_column = first_half_column + 4
-        pair_sum = centroids[first_half_column] + centroids[second_half_column]
-        if abs(pair_sum - mirrored_centroid_sum) > MIRRORED_CENTROID_TOLERANCE:
+    center_x = (CELL_WIDTH - 1) / 2
+    for first_half_column, second_half_column in ((0, 4), (1, 5)):
+        if centroids[first_half_column] <= center_x + CONTACT_PHASE_OFFSET:
+            errors.append(
+                f"running-right contact frame {first_half_column}: expected the forward contact "
+                f"on the right, got lower-leg centroid {centroids[first_half_column]:.1f}"
+            )
+        if centroids[second_half_column] >= center_x - CONTACT_PHASE_OFFSET:
+            errors.append(
+                f"running-right contact frame {second_half_column}: expected the opposing contact "
+                f"on the left, got lower-leg centroid {centroids[second_half_column]:.1f}"
+            )
+
+        first_feet = running_right_frames[first_half_column].crop(
+            (0, FOOT_DIRECTION_START_Y, CELL_WIDTH, CELL_HEIGHT)
+        )
+        second_feet = running_right_frames[second_half_column].crop(
+            (0, FOOT_DIRECTION_START_Y, CELL_WIDTH, CELL_HEIGHT)
+        )
+        mirrored_ratio = pixel_difference_ratio(second_feet, ImageOps.mirror(first_feet))
+        if mirrored_ratio < MIN_OPPOSITE_PHASE_REDRAW_RATIO:
             errors.append(
                 "running-right gait phases "
-                f"{first_half_column}/{second_half_column}: lower-leg centroids are not opposing "
-                f"({centroids[first_half_column]:.1f} + {centroids[second_half_column]:.1f} != "
-                f"{mirrored_centroid_sum})"
+                f"{first_half_column}/{second_half_column}: opposite contact reuses horizontally "
+                f"mirrored feet ({mirrored_ratio:.3f} differing pixels), which reverses foot direction"
             )
 
     if errors:
