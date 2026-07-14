@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "atlasSha256": "3d150a1429d64b1bce977a25699823780ac022f9de9480a063dd0c604f46edb4",
+  "atlasSha256": "f9dc936a85a5fe40b83b045c76fa6f6d8408684b8ec5809d1314264f09102b07",
   "errors": [],
   "frames": [
     {
@@ -12,9 +12,9 @@
         163,
         204
       ],
-      "alphaPixels": 12354,
+      "alphaPixels": 11924,
       "connectedComponents": 3,
-      "largestComponentPixels": 12352
+      "largestComponentPixels": 11922
     },
     {
       "row": 0,
@@ -25,9 +25,9 @@
         163,
         204
       ],
-      "alphaPixels": 12414,
-      "connectedComponents": 3,
-      "largestComponentPixels": 12412
+      "alphaPixels": 11980,
+      "connectedComponents": 4,
+      "largestComponentPixels": 11977
     },
     {
       "row": 0,
@@ -38,9 +38,9 @@
         163,
         204
       ],
-      "alphaPixels": 12268,
-      "connectedComponents": 2,
-      "largestComponentPixels": 12267
+      "alphaPixels": 11850,
+      "connectedComponents": 3,
+      "largestComponentPixels": 11848
     },
     {
       "row": 0,
@@ -51,9 +51,9 @@
         163,
         204
       ],
-      "alphaPixels": 12385,
+      "alphaPixels": 11954,
       "connectedComponents": 2,
-      "largestComponentPixels": 12384
+      "largestComponentPixels": 11953
     },
     {
       "row": 0,
@@ -64,22 +64,22 @@
         164,
         204
       ],
-      "alphaPixels": 12643,
-      "connectedComponents": 2,
-      "largestComponentPixels": 12642
-    },
-    {
-      "row": 0,
-      "column": 5,
-      "bbox": [
-        42,
-        5,
-        164,
-        204
-      ],
-      "alphaPixels": 12558,
+      "alphaPixels": 12202,
       "connectedComponents": 3,
-      "largestComponentPixels": 12556
+      "largestComponentPixels": 12200
+    },
+    {
+      "row": 0,
+      "column": 5,
+      "bbox": [
+        42,
+        5,
+        164,
+        204
+      ],
+      "alphaPixels": 12132,
+      "connectedComponents": 5,
+      "largestComponentPixels": 12128
     },
     {
       "row": 0,
@@ -90,217 +90,217 @@
         164,
         204
       ],
-      "alphaPixels": 12565,
-      "connectedComponents": 2,
-      "largestComponentPixels": 12564
+      "alphaPixels": 12135,
+      "connectedComponents": 3,
+      "largestComponentPixels": 12133
     },
     {
       "row": 1,
       "column": 0,
       "bbox": [
-        40,
+        51,
         8,
-        152,
-        199
+        141,
+        202
       ],
-      "alphaPixels": 12536,
-      "connectedComponents": 2,
-      "largestComponentPixels": 12535
+      "alphaPixels": 9822,
+      "connectedComponents": 1,
+      "largestComponentPixels": 9822
     },
     {
       "row": 1,
       "column": 1,
       "bbox": [
-        40,
-        9,
-        152,
-        201
+        51,
+        8,
+        141,
+        204
       ],
-      "alphaPixels": 12512,
+      "alphaPixels": 9663,
       "connectedComponents": 1,
-      "largestComponentPixels": 12512
+      "largestComponentPixels": 9663
     },
     {
       "row": 1,
       "column": 2,
       "bbox": [
-        40,
-        8,
-        152,
-        198
+        52,
+        7,
+        142,
+        201
       ],
-      "alphaPixels": 12256,
+      "alphaPixels": 9476,
       "connectedComponents": 1,
-      "largestComponentPixels": 12256
+      "largestComponentPixels": 9476
     },
     {
       "row": 1,
       "column": 3,
       "bbox": [
-        40,
-        7,
-        152,
-        195
+        52,
+        5,
+        141,
+        198
       ],
-      "alphaPixels": 12323,
+      "alphaPixels": 9537,
       "connectedComponents": 1,
-      "largestComponentPixels": 12323
+      "largestComponentPixels": 9537
     },
     {
       "row": 1,
       "column": 4,
       "bbox": [
-        40,
+        51,
         8,
-        152,
-        199
+        140,
+        202
       ],
-      "alphaPixels": 12536,
-      "connectedComponents": 2,
-      "largestComponentPixels": 12535
+      "alphaPixels": 9720,
+      "connectedComponents": 1,
+      "largestComponentPixels": 9720
     },
     {
       "row": 1,
       "column": 5,
       "bbox": [
-        40,
-        9,
-        152,
-        201
+        51,
+        8,
+        141,
+        204
       ],
-      "alphaPixels": 12512,
+      "alphaPixels": 9697,
       "connectedComponents": 1,
-      "largestComponentPixels": 12512
+      "largestComponentPixels": 9697
     },
     {
       "row": 1,
       "column": 6,
       "bbox": [
-        40,
+        52,
         8,
-        152,
-        198
+        141,
+        201
       ],
-      "alphaPixels": 12256,
+      "alphaPixels": 9434,
       "connectedComponents": 1,
-      "largestComponentPixels": 12256
+      "largestComponentPixels": 9434
     },
     {
       "row": 1,
       "column": 7,
       "bbox": [
-        40,
-        7,
-        152,
-        195
+        52,
+        5,
+        141,
+        198
       ],
-      "alphaPixels": 12323,
+      "alphaPixels": 9622,
       "connectedComponents": 1,
-      "largestComponentPixels": 12323
+      "largestComponentPixels": 9622
     },
     {
       "row": 2,
       "column": 0,
       "bbox": [
-        40,
+        51,
         8,
-        152,
-        199
+        141,
+        202
       ],
-      "alphaPixels": 12536,
-      "connectedComponents": 2,
-      "largestComponentPixels": 12535
+      "alphaPixels": 9822,
+      "connectedComponents": 1,
+      "largestComponentPixels": 9822
     },
     {
       "row": 2,
       "column": 1,
       "bbox": [
-        40,
-        9,
-        152,
-        201
+        51,
+        8,
+        141,
+        204
       ],
-      "alphaPixels": 12512,
+      "alphaPixels": 9663,
       "connectedComponents": 1,
-      "largestComponentPixels": 12512
+      "largestComponentPixels": 9663
     },
     {
       "row": 2,
       "column": 2,
       "bbox": [
-        40,
-        8,
-        152,
-        198
+        50,
+        7,
+        140,
+        201
       ],
-      "alphaPixels": 12256,
+      "alphaPixels": 9476,
       "connectedComponents": 1,
-      "largestComponentPixels": 12256
+      "largestComponentPixels": 9476
     },
     {
       "row": 2,
       "column": 3,
       "bbox": [
-        40,
-        7,
-        152,
-        195
+        51,
+        5,
+        140,
+        198
       ],
-      "alphaPixels": 12323,
+      "alphaPixels": 9537,
       "connectedComponents": 1,
-      "largestComponentPixels": 12323
+      "largestComponentPixels": 9537
     },
     {
       "row": 2,
       "column": 4,
       "bbox": [
-        40,
+        52,
         8,
-        152,
-        199
+        141,
+        202
       ],
-      "alphaPixels": 12536,
-      "connectedComponents": 2,
-      "largestComponentPixels": 12535
+      "alphaPixels": 9720,
+      "connectedComponents": 1,
+      "largestComponentPixels": 9720
     },
     {
       "row": 2,
       "column": 5,
       "bbox": [
-        40,
-        9,
-        152,
-        201
+        51,
+        8,
+        141,
+        204
       ],
-      "alphaPixels": 12512,
+      "alphaPixels": 9697,
       "connectedComponents": 1,
-      "largestComponentPixels": 12512
+      "largestComponentPixels": 9697
     },
     {
       "row": 2,
       "column": 6,
       "bbox": [
-        40,
+        51,
         8,
-        152,
-        198
+        140,
+        201
       ],
-      "alphaPixels": 12256,
+      "alphaPixels": 9434,
       "connectedComponents": 1,
-      "largestComponentPixels": 12256
+      "largestComponentPixels": 9434
     },
     {
       "row": 2,
       "column": 7,
       "bbox": [
-        40,
-        7,
-        152,
-        195
+        51,
+        5,
+        140,
+        198
       ],
-      "alphaPixels": 12323,
+      "alphaPixels": 9622,
       "connectedComponents": 1,
-      "largestComponentPixels": 12323
+      "largestComponentPixels": 9622
     },
     {
       "row": 3,
@@ -311,9 +311,9 @@
         154,
         204
       ],
-      "alphaPixels": 12149,
-      "connectedComponents": 1,
-      "largestComponentPixels": 12149
+      "alphaPixels": 11886,
+      "connectedComponents": 2,
+      "largestComponentPixels": 11885
     },
     {
       "row": 3,
@@ -324,9 +324,9 @@
         154,
         204
       ],
-      "alphaPixels": 12007,
-      "connectedComponents": 2,
-      "largestComponentPixels": 12006
+      "alphaPixels": 11748,
+      "connectedComponents": 3,
+      "largestComponentPixels": 11746
     },
     {
       "row": 3,
@@ -337,9 +337,9 @@
         153,
         204
       ],
-      "alphaPixels": 11900,
+      "alphaPixels": 11646,
       "connectedComponents": 2,
-      "largestComponentPixels": 11899
+      "largestComponentPixels": 11645
     },
     {
       "row": 3,
@@ -350,9 +350,9 @@
         153,
         204
       ],
-      "alphaPixels": 12059,
-      "connectedComponents": 3,
-      "largestComponentPixels": 12056
+      "alphaPixels": 11794,
+      "connectedComponents": 4,
+      "largestComponentPixels": 11790
     },
     {
       "row": 4,
@@ -363,9 +363,9 @@
         157,
         204
       ],
-      "alphaPixels": 9924,
+      "alphaPixels": 9575,
       "connectedComponents": 2,
-      "largestComponentPixels": 9923
+      "largestComponentPixels": 9574
     },
     {
       "row": 4,
@@ -376,9 +376,9 @@
         167,
         195
       ],
-      "alphaPixels": 11759,
+      "alphaPixels": 11441,
       "connectedComponents": 1,
-      "largestComponentPixels": 11759
+      "largestComponentPixels": 11441
     },
     {
       "row": 4,
@@ -389,9 +389,9 @@
         162,
         154
       ],
-      "alphaPixels": 11108,
+      "alphaPixels": 10833,
       "connectedComponents": 1,
-      "largestComponentPixels": 11108
+      "largestComponentPixels": 10833
     },
     {
       "row": 4,
@@ -402,9 +402,9 @@
         170,
         198
       ],
-      "alphaPixels": 11507,
+      "alphaPixels": 11069,
       "connectedComponents": 2,
-      "largestComponentPixels": 11506
+      "largestComponentPixels": 11068
     },
     {
       "row": 4,
@@ -415,9 +415,9 @@
         157,
         204
       ],
-      "alphaPixels": 9796,
+      "alphaPixels": 9460,
       "connectedComponents": 1,
-      "largestComponentPixels": 9796
+      "largestComponentPixels": 9460
     },
     {
       "row": 5,
@@ -428,9 +428,9 @@
         154,
         204
       ],
-      "alphaPixels": 11316,
-      "connectedComponents": 2,
-      "largestComponentPixels": 11314
+      "alphaPixels": 11144,
+      "connectedComponents": 3,
+      "largestComponentPixels": 11141
     },
     {
       "row": 5,
@@ -441,9 +441,9 @@
         150,
         204
       ],
-      "alphaPixels": 10706,
+      "alphaPixels": 10365,
       "connectedComponents": 3,
-      "largestComponentPixels": 10704
+      "largestComponentPixels": 10363
     },
     {
       "row": 5,
@@ -454,9 +454,9 @@
         148,
         204
       ],
-      "alphaPixels": 9932,
+      "alphaPixels": 9612,
       "connectedComponents": 2,
-      "largestComponentPixels": 9931
+      "largestComponentPixels": 9611
     },
     {
       "row": 5,
@@ -467,9 +467,9 @@
         148,
         204
       ],
-      "alphaPixels": 9158,
+      "alphaPixels": 9058,
       "connectedComponents": 1,
-      "largestComponentPixels": 9158
+      "largestComponentPixels": 9058
     },
     {
       "row": 5,
@@ -480,9 +480,9 @@
         149,
         204
       ],
-      "alphaPixels": 10037,
+      "alphaPixels": 9761,
       "connectedComponents": 1,
-      "largestComponentPixels": 10037
+      "largestComponentPixels": 9761
     },
     {
       "row": 5,
@@ -493,9 +493,9 @@
         150,
         204
       ],
-      "alphaPixels": 10669,
+      "alphaPixels": 10318,
       "connectedComponents": 1,
-      "largestComponentPixels": 10669
+      "largestComponentPixels": 10318
     },
     {
       "row": 5,
@@ -506,9 +506,9 @@
         153,
         204
       ],
-      "alphaPixels": 11160,
-      "connectedComponents": 2,
-      "largestComponentPixels": 11159
+      "alphaPixels": 10835,
+      "connectedComponents": 3,
+      "largestComponentPixels": 10833
     },
     {
       "row": 5,
@@ -519,9 +519,9 @@
         152,
         204
       ],
-      "alphaPixels": 11064,
+      "alphaPixels": 10904,
       "connectedComponents": 2,
-      "largestComponentPixels": 11063
+      "largestComponentPixels": 10903
     },
     {
       "row": 6,
@@ -532,9 +532,9 @@
         147,
         204
       ],
-      "alphaPixels": 10277,
+      "alphaPixels": 10078,
       "connectedComponents": 2,
-      "largestComponentPixels": 10276
+      "largestComponentPixels": 10077
     },
     {
       "row": 6,
@@ -545,9 +545,9 @@
         146,
         204
       ],
-      "alphaPixels": 10434,
+      "alphaPixels": 10231,
       "connectedComponents": 1,
-      "largestComponentPixels": 10434
+      "largestComponentPixels": 10231
     },
     {
       "row": 6,
@@ -558,9 +558,9 @@
         147,
         204
       ],
-      "alphaPixels": 10295,
+      "alphaPixels": 10074,
       "connectedComponents": 2,
-      "largestComponentPixels": 10294
+      "largestComponentPixels": 10073
     },
     {
       "row": 6,
@@ -571,9 +571,9 @@
         147,
         204
       ],
-      "alphaPixels": 10266,
-      "connectedComponents": 1,
-      "largestComponentPixels": 10266
+      "alphaPixels": 10022,
+      "connectedComponents": 3,
+      "largestComponentPixels": 10020
     },
     {
       "row": 6,
@@ -584,9 +584,9 @@
         149,
         204
       ],
-      "alphaPixels": 10360,
+      "alphaPixels": 10131,
       "connectedComponents": 2,
-      "largestComponentPixels": 10359
+      "largestComponentPixels": 10130
     },
     {
       "row": 6,
@@ -597,9 +597,9 @@
         145,
         204
       ],
-      "alphaPixels": 10186,
+      "alphaPixels": 9984,
       "connectedComponents": 2,
-      "largestComponentPixels": 10185
+      "largestComponentPixels": 9983
     },
     {
       "row": 7,
@@ -610,9 +610,9 @@
         153,
         204
       ],
-      "alphaPixels": 11204,
+      "alphaPixels": 11095,
       "connectedComponents": 2,
-      "largestComponentPixels": 11203
+      "largestComponentPixels": 11094
     },
     {
       "row": 7,
@@ -623,9 +623,9 @@
         151,
         204
       ],
-      "alphaPixels": 11089,
+      "alphaPixels": 10976,
       "connectedComponents": 2,
-      "largestComponentPixels": 11088
+      "largestComponentPixels": 10975
     },
     {
       "row": 7,
@@ -636,9 +636,9 @@
         150,
         204
       ],
-      "alphaPixels": 11082,
+      "alphaPixels": 10968,
       "connectedComponents": 1,
-      "largestComponentPixels": 11082
+      "largestComponentPixels": 10968
     },
     {
       "row": 7,
@@ -649,9 +649,9 @@
         147,
         204
       ],
-      "alphaPixels": 11057,
+      "alphaPixels": 10940,
       "connectedComponents": 2,
-      "largestComponentPixels": 11056
+      "largestComponentPixels": 10939
     },
     {
       "row": 7,
@@ -662,9 +662,9 @@
         151,
         204
       ],
-      "alphaPixels": 11258,
+      "alphaPixels": 11146,
       "connectedComponents": 2,
-      "largestComponentPixels": 11257
+      "largestComponentPixels": 11145
     },
     {
       "row": 7,
@@ -675,9 +675,9 @@
         152,
         204
       ],
-      "alphaPixels": 11299,
+      "alphaPixels": 11186,
       "connectedComponents": 1,
-      "largestComponentPixels": 11299
+      "largestComponentPixels": 11186
     },
     {
       "row": 8,
@@ -688,9 +688,9 @@
         143,
         204
       ],
-      "alphaPixels": 10023,
+      "alphaPixels": 9799,
       "connectedComponents": 1,
-      "largestComponentPixels": 10023
+      "largestComponentPixels": 9799
     },
     {
       "row": 8,
@@ -701,9 +701,9 @@
         144,
         204
       ],
-      "alphaPixels": 10225,
+      "alphaPixels": 10001,
       "connectedComponents": 1,
-      "largestComponentPixels": 10225
+      "largestComponentPixels": 10001
     },
     {
       "row": 8,
@@ -714,9 +714,9 @@
         142,
         204
       ],
-      "alphaPixels": 10002,
+      "alphaPixels": 9780,
       "connectedComponents": 1,
-      "largestComponentPixels": 10002
+      "largestComponentPixels": 9780
     },
     {
       "row": 8,
@@ -727,9 +727,9 @@
         143,
         204
       ],
-      "alphaPixels": 10091,
+      "alphaPixels": 9868,
       "connectedComponents": 1,
-      "largestComponentPixels": 10091
+      "largestComponentPixels": 9868
     },
     {
       "row": 8,
@@ -740,9 +740,9 @@
         143,
         204
       ],
-      "alphaPixels": 10051,
+      "alphaPixels": 9835,
       "connectedComponents": 1,
-      "largestComponentPixels": 10051
+      "largestComponentPixels": 9835
     },
     {
       "row": 8,
@@ -753,9 +753,9 @@
         143,
         204
       ],
-      "alphaPixels": 10021,
-      "connectedComponents": 2,
-      "largestComponentPixels": 10019
+      "alphaPixels": 9797,
+      "connectedComponents": 3,
+      "largestComponentPixels": 9794
     },
     {
       "row": 9,
@@ -766,9 +766,9 @@
         147,
         204
       ],
-      "alphaPixels": 10987,
-      "connectedComponents": 5,
-      "largestComponentPixels": 10983
+      "alphaPixels": 10844,
+      "connectedComponents": 4,
+      "largestComponentPixels": 10841
     },
     {
       "row": 9,
@@ -779,9 +779,9 @@
         144,
         204
       ],
-      "alphaPixels": 10456,
+      "alphaPixels": 10326,
       "connectedComponents": 4,
-      "largestComponentPixels": 10453
+      "largestComponentPixels": 10323
     },
     {
       "row": 9,
@@ -792,9 +792,9 @@
         144,
         204
       ],
-      "alphaPixels": 10419,
+      "alphaPixels": 10313,
       "connectedComponents": 3,
-      "largestComponentPixels": 10417
+      "largestComponentPixels": 10311
     },
     {
       "row": 9,
@@ -805,9 +805,9 @@
         143,
         204
       ],
-      "alphaPixels": 10551,
+      "alphaPixels": 10435,
       "connectedComponents": 2,
-      "largestComponentPixels": 10546
+      "largestComponentPixels": 10430
     },
     {
       "row": 9,
@@ -818,9 +818,9 @@
         144,
         204
       ],
-      "alphaPixels": 10622,
-      "connectedComponents": 2,
-      "largestComponentPixels": 10621
+      "alphaPixels": 10518,
+      "connectedComponents": 3,
+      "largestComponentPixels": 10516
     },
     {
       "row": 9,
@@ -831,9 +831,9 @@
         143,
         204
       ],
-      "alphaPixels": 10160,
-      "connectedComponents": 3,
-      "largestComponentPixels": 10158
+      "alphaPixels": 10071,
+      "connectedComponents": 5,
+      "largestComponentPixels": 10067
     },
     {
       "row": 9,
@@ -844,9 +844,9 @@
         145,
         204
       ],
-      "alphaPixels": 10867,
-      "connectedComponents": 3,
-      "largestComponentPixels": 10861
+      "alphaPixels": 10781,
+      "connectedComponents": 5,
+      "largestComponentPixels": 10773
     },
     {
       "row": 9,
@@ -857,9 +857,9 @@
         144,
         204
       ],
-      "alphaPixels": 10877,
-      "connectedComponents": 4,
-      "largestComponentPixels": 10873
+      "alphaPixels": 10790,
+      "connectedComponents": 5,
+      "largestComponentPixels": 10785
     },
     {
       "row": 10,
@@ -870,9 +870,9 @@
         146,
         204
       ],
-      "alphaPixels": 9892,
+      "alphaPixels": 9778,
       "connectedComponents": 1,
-      "largestComponentPixels": 9892
+      "largestComponentPixels": 9778
     },
     {
       "row": 10,
@@ -883,9 +883,9 @@
         150,
         204
       ],
-      "alphaPixels": 10877,
-      "connectedComponents": 4,
-      "largestComponentPixels": 10873
+      "alphaPixels": 10790,
+      "connectedComponents": 5,
+      "largestComponentPixels": 10785
     },
     {
       "row": 10,
@@ -896,9 +896,9 @@
         149,
         204
       ],
-      "alphaPixels": 10867,
-      "connectedComponents": 3,
-      "largestComponentPixels": 10861
+      "alphaPixels": 10781,
+      "connectedComponents": 5,
+      "largestComponentPixels": 10773
     },
     {
       "row": 10,
@@ -909,9 +909,9 @@
         145,
         204
       ],
-      "alphaPixels": 10160,
-      "connectedComponents": 3,
-      "largestComponentPixels": 10158
+      "alphaPixels": 10071,
+      "connectedComponents": 5,
+      "largestComponentPixels": 10067
     },
     {
       "row": 10,
@@ -922,9 +922,9 @@
         146,
         204
       ],
-      "alphaPixels": 10622,
-      "connectedComponents": 2,
-      "largestComponentPixels": 10621
+      "alphaPixels": 10518,
+      "connectedComponents": 3,
+      "largestComponentPixels": 10516
     },
     {
       "row": 10,
@@ -935,9 +935,9 @@
         147,
         204
       ],
-      "alphaPixels": 10551,
+      "alphaPixels": 10435,
       "connectedComponents": 2,
-      "largestComponentPixels": 10546
+      "largestComponentPixels": 10430
     },
     {
       "row": 10,
@@ -948,9 +948,9 @@
         146,
         204
       ],
-      "alphaPixels": 10419,
+      "alphaPixels": 10313,
       "connectedComponents": 3,
-      "largestComponentPixels": 10417
+      "largestComponentPixels": 10311
     },
     {
       "row": 10,
@@ -961,9 +961,9 @@
         146,
         204
       ],
-      "alphaPixels": 10456,
+      "alphaPixels": 10326,
       "connectedComponents": 4,
-      "largestComponentPixels": 10453
+      "largestComponentPixels": 10323
     }
   ]
 }

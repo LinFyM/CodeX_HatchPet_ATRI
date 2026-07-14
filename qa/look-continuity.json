@@ -1,182 +1,182 @@
 {
   "ok": true,
-  "atlasSha256": "3d150a1429d64b1bce977a25699823780ac022f9de9480a063dd0c604f46edb4",
+  "atlasSha256": "f9dc936a85a5fe40b83b045c76fa6f6d8408684b8ec5809d1314264f09102b07",
   "warnings": [],
   "pairs": [
     {
       "from": "000",
       "to": "022.5",
-      "fullAlphaIou": 0.9059,
-      "lowerBodyAlphaIou": 0.9195,
-      "areaRatio": 1.0508,
+      "fullAlphaIou": 0.8945,
+      "lowerBodyAlphaIou": 0.9236,
+      "areaRatio": 1.0502,
       "centerDelta": [
-        -2.208,
-        1.798
+        -2.184,
+        1.723
       ]
     },
     {
       "from": "022.5",
       "to": "045",
-      "fullAlphaIou": 0.9459,
-      "lowerBodyAlphaIou": 0.9777,
-      "areaRatio": 1.0036,
+      "fullAlphaIou": 0.9363,
+      "lowerBodyAlphaIou": 0.9772,
+      "areaRatio": 1.0013,
       "centerDelta": [
-        -1.066,
-        -0.572
+        -1.015,
+        -0.589
       ]
     },
     {
       "from": "045",
       "to": "067.5",
-      "fullAlphaIou": 0.9321,
-      "lowerBodyAlphaIou": 0.9087,
-      "areaRatio": 1.0127,
+      "fullAlphaIou": 0.9248,
+      "lowerBodyAlphaIou": 0.9066,
+      "areaRatio": 1.0118,
       "centerDelta": [
-        -0.307,
-        -0.799
+        -0.331,
+        -0.815
       ]
     },
     {
       "from": "067.5",
       "to": "090",
-      "fullAlphaIou": 0.9435,
-      "lowerBodyAlphaIou": 0.9135,
-      "areaRatio": 1.0067,
+      "fullAlphaIou": 0.9318,
+      "lowerBodyAlphaIou": 0.9111,
+      "areaRatio": 1.008,
       "centerDelta": [
-        0.839,
-        -0.594
+        0.856,
+        -0.611
       ]
     },
     {
       "from": "090",
       "to": "112.5",
-      "fullAlphaIou": 0.9106,
-      "lowerBodyAlphaIou": 0.9166,
-      "areaRatio": 1.0455,
+      "fullAlphaIou": 0.8965,
+      "lowerBodyAlphaIou": 0.9145,
+      "areaRatio": 1.0444,
       "centerDelta": [
-        0.344,
-        2.56
+        0.323,
+        2.561
       ]
     },
     {
       "from": "112.5",
       "to": "135",
-      "fullAlphaIou": 0.8932,
-      "lowerBodyAlphaIou": 0.8902,
-      "areaRatio": 1.0696,
+      "fullAlphaIou": 0.8769,
+      "lowerBodyAlphaIou": 0.889,
+      "areaRatio": 1.0705,
       "centerDelta": [
-        -0.039,
-        -1.775
+        -0.074,
+        -1.745
       ]
     },
     {
       "from": "135",
       "to": "157.5",
-      "fullAlphaIou": 0.9428,
+      "fullAlphaIou": 0.9387,
       "lowerBodyAlphaIou": 0.909,
-      "areaRatio": 1.0009,
+      "areaRatio": 1.0008,
       "centerDelta": [
-        -0.318,
-        -0.456
+        -0.327,
+        -0.458
       ]
     },
     {
       "from": "157.5",
       "to": "180",
-      "fullAlphaIou": 0.8566,
-      "lowerBodyAlphaIou": 0.8356,
-      "areaRatio": 1.0996,
+      "fullAlphaIou": 0.8435,
+      "lowerBodyAlphaIou": 0.8358,
+      "areaRatio": 1.1035,
       "centerDelta": [
-        3.16,
-        2.329
+        3.153,
+        2.416
       ]
     },
     {
       "from": "180",
       "to": "202.5",
-      "fullAlphaIou": 0.8915,
-      "lowerBodyAlphaIou": 0.8861,
-      "areaRatio": 1.0996,
+      "fullAlphaIou": 0.8762,
+      "lowerBodyAlphaIou": 0.8858,
+      "areaRatio": 1.1035,
       "centerDelta": [
-        0.339,
-        -2.329
+        0.337,
+        -2.416
       ]
     },
     {
       "from": "202.5",
       "to": "225",
-      "fullAlphaIou": 0.9428,
+      "fullAlphaIou": 0.9387,
       "lowerBodyAlphaIou": 0.909,
-      "areaRatio": 1.0009,
+      "areaRatio": 1.0008,
       "centerDelta": [
-        -0.318,
-        0.456
+        -0.327,
+        0.458
       ]
     },
     {
       "from": "225",
       "to": "247.5",
-      "fullAlphaIou": 0.8932,
-      "lowerBodyAlphaIou": 0.8902,
-      "areaRatio": 1.0696,
+      "fullAlphaIou": 0.8769,
+      "lowerBodyAlphaIou": 0.889,
+      "areaRatio": 1.0705,
       "centerDelta": [
-        -0.039,
-        1.775
+        -0.074,
+        1.745
       ]
     },
     {
       "from": "247.5",
       "to": "270",
-      "fullAlphaIou": 0.9106,
-      "lowerBodyAlphaIou": 0.9166,
-      "areaRatio": 1.0455,
+      "fullAlphaIou": 0.8965,
+      "lowerBodyAlphaIou": 0.9145,
+      "areaRatio": 1.0444,
       "centerDelta": [
-        0.344,
-        -2.56
+        0.323,
+        -2.561
       ]
     },
     {
       "from": "270",
       "to": "292.5",
-      "fullAlphaIou": 0.9435,
-      "lowerBodyAlphaIou": 0.9135,
-      "areaRatio": 1.0067,
+      "fullAlphaIou": 0.9318,
+      "lowerBodyAlphaIou": 0.9111,
+      "areaRatio": 1.008,
       "centerDelta": [
-        0.839,
-        0.594
+        0.856,
+        0.611
       ]
     },
     {
       "from": "292.5",
       "to": "315",
-      "fullAlphaIou": 0.9321,
-      "lowerBodyAlphaIou": 0.9087,
-      "areaRatio": 1.0127,
+      "fullAlphaIou": 0.9248,
+      "lowerBodyAlphaIou": 0.9066,
+      "areaRatio": 1.0118,
       "centerDelta": [
-        -0.307,
-        0.799
+        -0.331,
+        0.815
       ]
     },
     {
       "from": "315",
       "to": "337.5",
-      "fullAlphaIou": 0.9459,
-      "lowerBodyAlphaIou": 0.9777,
-      "areaRatio": 1.0036,
+      "fullAlphaIou": 0.9363,
+      "lowerBodyAlphaIou": 0.9772,
+      "areaRatio": 1.0013,
       "centerDelta": [
-        -1.066,
-        0.572
+        -1.015,
+        0.589
       ]
     },
     {
       "from": "337.5",
       "to": "000",
-      "fullAlphaIou": 0.8846,
-      "lowerBodyAlphaIou": 0.8447,
-      "areaRatio": 1.0508,
+      "fullAlphaIou": 0.8677,
+      "lowerBodyAlphaIou": 0.8444,
+      "areaRatio": 1.0502,
       "centerDelta": [
-        -0.198,
-        -1.798
+        -0.17,
+        -1.723
       ]
     }
   ]

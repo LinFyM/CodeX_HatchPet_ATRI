@@ -1,9 +1,9 @@
 # CodeX HatchPet ATRI
 
 A Codex-compatible v2 animated desktop pet inspired by ATRI from *ATRI -My Dear Moments-*.
-The current atlas uses one consistent chibi model across all actions. The run keeps a fixed upper
-body and performs two compact alternating steps; the left cycle is an exact whole-frame mirror, so
-body direction, anatomy, and the warm near/far-leg shading always turn together.
+The current atlas uses one consistent chibi model and warm ash-silver palette across all actions.
+The run uses an animated upper body and a compact contact/load/pass/flight cycle; the left cycle is
+an exact whole-frame mirror, so body direction, anatomy, and warm near/far-leg shading turn together.
 
 ![ATRI animation contact sheet](qa/contact-sheet-extended.png)
 
@@ -47,11 +47,14 @@ Deterministic validation confirms:
 - sprite contract: v2
 - transparent RGB residue: 0 pixels
 - complete connected character anatomy in every used frame
-- a compact two-step jog: four contact/passing/lift poses, then the same poses with the anatomical
-  near/far legs exchanged
+- a canonical cross-action head/body scale with a dedicated proportion regression gate
+- no large purple, fuchsia, or chroma-key component in any used frame
+- a compact two-step jog: contact/load/pass/short-flight, then the same lower-body geometry with the
+  anatomical near/far legs exchanged while the upper body continues moving
 - exact whole-frame left/right running mirrors with preserved temporal order and leg shading
-- run torso drift of `0.057 px` horizontally and `1.234 px` vertically
-- adjacent run silhouette IoU of `0.921–0.952` and a maximum warm-leg span of `43 px`
+- neutral-action eye-depth range of `8.853 px`; idle/run contact heights of `198/194 px`
+- run torso motion of `0.980 px` horizontally and `2.260 px` vertically
+- adjacent run silhouette IoU of `0.848–0.895` and a maximum warm-leg span of `57 px`
 - zero cool purple/blue pixels in every running-leg region
 - coherent crouch/launch/vertical-tuck-apex/descent/landing-absorption physics
 - exact unshifted look mirrors and a continuous clockwise 16-direction loop

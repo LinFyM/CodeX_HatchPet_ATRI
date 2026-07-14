@@ -36,8 +36,9 @@ Official sources:
 - Silhouette: the ahoge, long twin-flowing hair masses, huge bell sleeves, A-line sailor dress, and bare
   feet are the primary small-size recognition cues.
 - Palette: warm ivory white, turquoise/teal trim, muted crimson ribbon, warm ash-silver hair with
-  restrained mauve-gray shading, coral-magenta eyes, dark navy-black bows, and restrained gold
-  buttons. Mauve is a hair-only accent: face, hands, legs, and feet stay healthy warm ivory/peach.
+  beige and warm gray shading, coral-magenta eyes, dark navy-black bows, and restrained gold buttons.
+  Purple, violet, fuchsia, and magenta hair panels are forbidden; magenta is reserved for the eyes.
+  Face, hands, legs, and feet stay healthy warm ivory/peach.
 - Rendering: complete opaque body in every frame, crisp antialiased edges, no cast shadow, no detached
   effects, no scenery, no text, and no transparent gaps through limbs or torso.
 
@@ -45,9 +46,10 @@ Official sources:
 
 - Idle: calm breathing, soft hair sway, tiny blink, and a restrained proud smile.
 - Running right: a cute upright eight-frame two-step jog, never a 100 m sprint. Frames 0–3 form one
-  compact contact/passing/lift half-step; frames 4–7 reuse the same readable silhouettes with the
-  anatomical near/far legs exchanged. The torso stays registered, feet remain connected, stride stays
-  below half a face width, and far-leg depth uses warm peach—not purple, blue, or gray.
+  compact contact/load/pass/short-flight half-step; frames 4–7 reuse the same readable lower-body
+  geometry with the anatomical near/far legs exchanged. The torso has a subtle phase bob, arms and
+  hair advance through all eight frames, feet remain connected, and far-leg depth uses warm peach—not
+  purple, blue, or gray.
 - Running left: framewise whole-body mirror of the approved right-running cycle, preserving temporal
   order.
 - Waving: bright, eager greeting using only the arm and hand pose; no motion arcs.
@@ -69,6 +71,8 @@ Official sources:
 - Valid Codex v2 package: 1536×2288 WebP, 8×11 cells, 192×208 each, 74 populated cells, transparent
   unused cells, and `spriteVersionNumber: 2`.
 - All frames preserve one character identity and remain legible at in-app display size.
+- Neutral actions share one eye/head scale and planted model height; running may not use an oversized
+  head, shortened torso, or independently drifting chibi proportion.
 - Directional running is a visibly alternating two-step loop with no repeated-foot cadence, reversed
   limbs, detached anatomy, clipping, seams, or edge tearing.
 - All nine standard states are immediately distinguishable and character-specific.
