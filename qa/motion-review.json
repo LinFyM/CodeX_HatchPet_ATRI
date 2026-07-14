@@ -1,0 +1,36 @@
+{
+  "ok": true,
+  "atlasSha256": "3d150a1429d64b1bce977a25699823780ac022f9de9480a063dd0c604f46edb4",
+  "reviewDate": "2026-07-14",
+  "reviewedActions": [
+    "idle",
+    "run-right",
+    "run-left",
+    "wave",
+    "jump",
+    "failed",
+    "waiting",
+    "task",
+    "review",
+    "look-16"
+  ],
+  "inspectionModes": [
+    "native-size full atlas contact sheet",
+    "3x full-body run strip",
+    "5x right/left leg strips",
+    "3x jump strip",
+    "2x strips for every non-locomotion state",
+    "ordered 16-direction look strips"
+  ],
+  "findings": {
+    "running": "four-pose half-step repeats with the near/far warm leg shading exchanged; fixed torso; exact whole-frame left mirror",
+    "jump": "crouch, launch, vertical apex tuck under pelvis, feet-down descent, and crouched landing absorption",
+    "wave": "same raised open hand in all frames; no finger-sign teleport",
+    "failed": "surprise to head droop to recovery with both arms retained",
+    "waiting": "hands remain clasped at chest",
+    "task": "hand remains at temple",
+    "review": "hand remains at chin",
+    "look": "clockwise 16-frame head/eye sequence with planted baseline and exact mirrored left half"
+  },
+  "rejectedVariantsShipped": false
+}

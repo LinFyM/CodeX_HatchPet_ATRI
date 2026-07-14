@@ -1,9 +1,9 @@
 # CodeX HatchPet ATRI
 
 A Codex-compatible v2 animated desktop pet inspired by ATRI from *ATRI -My Dear Moments-*.
-The rebuild is based on a documented character brief and one unified visual model. Every running
-frame is a complete-body drawing; the left-running cycle mirrors each approved right-running frame
-without reversing temporal order, so anatomy and leg shading turn together.
+The current atlas uses one consistent chibi model across all actions. The run keeps a fixed upper
+body and performs two compact alternating steps; the left cycle is an exact whole-frame mirror, so
+body direction, anatomy, and the warm near/far-leg shading always turn together.
 
 ![ATRI animation contact sheet](qa/contact-sheet-extended.png)
 
@@ -30,9 +30,9 @@ Restart Codex if the pet does not appear immediately.
 
 ## Validation
 
-The [`qa/`](qa/) folder contains the character brief, action mechanics, v2 atlas validation,
-chroma-despill report, direction semantics, blind direction validation, continuity measurements,
-mirror finalization, and full visual review sheets.
+The [`qa/`](qa/) folder contains the character brief, action mechanics, v2 atlas validator,
+chroma/alpha report, direction semantics, continuity measurements, full visual review sheets, and a
+manual motion-review manifest bound to the exact atlas SHA-256.
 
 Run the complete structural validator with:
 
@@ -47,12 +47,15 @@ Deterministic validation confirms:
 - sprite contract: v2
 - transparent RGB residue: 0 pixels
 - complete connected character anatomy in every used frame
-- a true two-step run: contact/down/passing/flight, then the opposite leg
+- a compact two-step jog: four contact/passing/lift poses, then the same poses with the anatomical
+  near/far legs exchanged
 - exact whole-frame left/right running mirrors with preserved temporal order and leg shading
-- face/torso registration with less than 1 px horizontal anchor drift across the run loop
-- at least 5 px transparent clearance around every running frame edge
-- coherent crouch/launch/apex/descent/settle jump physics
-- 16-direction look loop with zero continuity warnings and mirror-safe shading
+- run torso drift of `0.057 px` horizontally and `1.234 px` vertically
+- adjacent run silhouette IoU of `0.921–0.952` and a maximum warm-leg span of `43 px`
+- zero cool purple/blue pixels in every running-leg region
+- coherent crouch/launch/vertical-tuck-apex/descent/landing-absorption physics
+- exact unshifted look mirrors and a continuous clockwise 16-direction loop
+- SHA-bound native-size and enlarged frame-strip review of every action
 - no structural validation errors
 
 ## Character and rights notice

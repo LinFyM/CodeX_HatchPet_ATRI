@@ -1,30 +1,30 @@
 {
   "ok": true,
-  "reviewRequired": false,
-  "method": "manual full-resolution blind opposite-pair silhouette and orientation review",
+  "atlasSha256": "3d150a1429d64b1bce977a25699823780ac022f9de9480a063dd0c604f46edb4",
+  "method": "manual opposite-pair silhouette and orientation review",
   "pairs": [
     {
-      "first": "0",
+      "first": "000",
       "second": "180",
       "verdict": "pass"
     },
     {
-      "first": "22.5",
+      "first": "022.5",
       "second": "202.5",
       "verdict": "pass"
     },
     {
-      "first": "45",
+      "first": "045",
       "second": "225",
       "verdict": "pass"
     },
     {
-      "first": "67.5",
+      "first": "067.5",
       "second": "247.5",
       "verdict": "pass"
     },
     {
-      "first": "90",
+      "first": "090",
       "second": "270",
       "verdict": "pass"
     },

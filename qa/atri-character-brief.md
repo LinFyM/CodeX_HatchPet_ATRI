@@ -35,21 +35,25 @@ Official sources:
   design may not drift between states.
 - Silhouette: the ahoge, long twin-flowing hair masses, huge bell sleeves, A-line sailor dress, and bare
   feet are the primary small-size recognition cues.
-- Palette: warm ivory white, turquoise/teal trim, muted crimson ribbon, warm ash-silver hair with mauve
-  shadows, coral-magenta eyes, dark navy-black bows, and restrained gold buttons.
+- Palette: warm ivory white, turquoise/teal trim, muted crimson ribbon, warm ash-silver hair with
+  restrained mauve-gray shading, coral-magenta eyes, dark navy-black bows, and restrained gold
+  buttons. Mauve is a hair-only accent: face, hands, legs, and feet stay healthy warm ivory/peach.
 - Rendering: complete opaque body in every frame, crisp antialiased edges, no cast shadow, no detached
   effects, no scenery, no text, and no transparent gaps through limbs or torso.
 
 ## State direction
 
 - Idle: calm breathing, soft hair sway, tiny blink, and a restrained proud smile.
-- Running right: a real eight-frame two-step sprint cycle. Frames 0–3 are one leg's contact/down/pass/
-  flight phases; frames 4–7 repeat those phases with the opposite leg. Near and far legs must be
-  distinguishable through overlap and shading. Every frame is one complete body.
+- Running right: a cute upright eight-frame two-step jog, never a 100 m sprint. Frames 0–3 form one
+  compact contact/passing/lift half-step; frames 4–7 reuse the same readable silhouettes with the
+  anatomical near/far legs exchanged. The torso stays registered, feet remain connected, stride stays
+  below half a face width, and far-leg depth uses warm peach—not purple, blue, or gray.
 - Running left: framewise whole-body mirror of the approved right-running cycle, preserving temporal
   order.
 - Waving: bright, eager greeting using only the arm and hand pose; no motion arcs.
-- Jumping: joyful high-performance hop with anticipation, lift, apex, descent, and settle; no floor cue.
+- Jumping: joyful high-performance hop with crouched anticipation, leg-driven launch, a vertical apex
+  tuck under the pelvis, feet-down descent, and knee-flexed landing absorption. No mid-air forward
+  double kick, unexplained torso lock, or floor cue.
 - Failed: the comic "high-performance but unexpectedly clumsy" contrast, shown through expression and
   posture only.
 - Waiting: hopeful request for approval/help, with attentive eye contact and hands gathered near the
@@ -70,12 +74,12 @@ Official sources:
 - All nine standard states are immediately distinguishable and character-specific.
 - All 16 look directions pass cardinal semantics, ordered-loop continuity, scale, baseline, edge, and
   transparency review.
-- Left-half look frames preserve whole-frame mirrored anatomy and lighting under one consistent 2 px
-  registration translation, avoiding both leg-shadow inversion and a 337.5/0-degree loop jump.
+- Left-half look frames are exact, unshifted whole-frame mirrors of their right-half peers, avoiding
+  both leg-shadow inversion and a 337.5/0-degree loop jump.
 - Repository asset and local installation are byte-identical after final packaging.
 
 ## Non-goals
 
 - No new application format, custom runtime logic, audio, text bubbles, or external props.
 - No copying official images into the shipped package.
-- No one-cell repairs or limb compositing across independently generated bodies.
+- No one-cell repairs or limb grafting across independently generated character bodies.

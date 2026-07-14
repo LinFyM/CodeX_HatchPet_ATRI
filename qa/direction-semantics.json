@@ -1,102 +1,103 @@
 {
   "ok": true,
-  "reviewed_by": "visual review of rebuilt unified-model direction sheet",
+  "atlasSha256": "3d150a1429d64b1bce977a25699823780ac022f9de9480a063dd0c604f46edb4",
+  "reviewedBy": "ordered native-size direction strip inspection",
   "directions": [
     {
-      "direction": "0",
+      "direction": "000",
       "expected": "up",
       "verdict": "pass",
-      "observed": "head and eye cues agree; planted lower body and baseline remain registered"
+      "observed": "head/eye cue agrees; feet and baseline stay planted"
     },
     {
-      "direction": "22.5",
+      "direction": "022.5",
       "expected": "up-right",
       "verdict": "pass",
-      "observed": "head and eye cues agree; planted lower body and baseline remain registered"
+      "observed": "head/eye cue agrees; feet and baseline stay planted"
     },
     {
-      "direction": "45",
+      "direction": "045",
       "expected": "up-right",
       "verdict": "pass",
-      "observed": "head and eye cues agree; planted lower body and baseline remain registered"
+      "observed": "head/eye cue agrees; feet and baseline stay planted"
     },
     {
-      "direction": "67.5",
+      "direction": "067.5",
       "expected": "up-right",
       "verdict": "pass",
-      "observed": "head and eye cues agree; planted lower body and baseline remain registered"
+      "observed": "head/eye cue agrees; feet and baseline stay planted"
     },
     {
-      "direction": "90",
+      "direction": "090",
       "expected": "right",
       "verdict": "pass",
-      "observed": "head and eye cues agree; planted lower body and baseline remain registered"
+      "observed": "head/eye cue agrees; feet and baseline stay planted"
     },
     {
       "direction": "112.5",
       "expected": "down-right",
       "verdict": "pass",
-      "observed": "head and eye cues agree; planted lower body and baseline remain registered"
+      "observed": "head/eye cue agrees; feet and baseline stay planted"
     },
     {
       "direction": "135",
       "expected": "down-right",
       "verdict": "pass",
-      "observed": "head and eye cues agree; planted lower body and baseline remain registered"
+      "observed": "head/eye cue agrees; feet and baseline stay planted"
     },
     {
       "direction": "157.5",
       "expected": "down-right",
       "verdict": "pass",
-      "observed": "head and eye cues agree; planted lower body and baseline remain registered"
+      "observed": "head/eye cue agrees; feet and baseline stay planted"
     },
     {
       "direction": "180",
       "expected": "down",
       "verdict": "pass",
-      "observed": "head and eye cues agree; planted lower body and baseline remain registered"
+      "observed": "head/eye cue agrees; feet and baseline stay planted"
     },
     {
       "direction": "202.5",
       "expected": "down-left",
       "verdict": "pass",
-      "observed": "head and eye cues agree; planted lower body and baseline remain registered"
+      "observed": "head/eye cue agrees; feet and baseline stay planted"
     },
     {
       "direction": "225",
       "expected": "down-left",
       "verdict": "pass",
-      "observed": "head and eye cues agree; planted lower body and baseline remain registered"
+      "observed": "head/eye cue agrees; feet and baseline stay planted"
     },
     {
       "direction": "247.5",
       "expected": "down-left",
       "verdict": "pass",
-      "observed": "head and eye cues agree; planted lower body and baseline remain registered"
+      "observed": "head/eye cue agrees; feet and baseline stay planted"
     },
     {
       "direction": "270",
       "expected": "left",
       "verdict": "pass",
-      "observed": "head and eye cues agree; planted lower body and baseline remain registered"
+      "observed": "head/eye cue agrees; feet and baseline stay planted"
     },
     {
       "direction": "292.5",
       "expected": "up-left",
       "verdict": "pass",
-      "observed": "head and eye cues agree; planted lower body and baseline remain registered"
+      "observed": "head/eye cue agrees; feet and baseline stay planted"
     },
     {
       "direction": "315",
       "expected": "up-left",
       "verdict": "pass",
-      "observed": "head and eye cues agree; planted lower body and baseline remain registered"
+      "observed": "head/eye cue agrees; feet and baseline stay planted"
     },
     {
       "direction": "337.5",
       "expected": "up-left",
       "verdict": "pass",
-      "observed": "head and eye cues agree; planted lower body and baseline remain registered"
+      "observed": "head/eye cue agrees; feet and baseline stay planted"
     }
   ]
 }
