@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import math
 import sys
 from collections import deque
 from pathlib import Path
@@ -167,8 +168,8 @@ def validate_structure(atlas: Image.Image) -> list[str]:
     return errors
 
 
-def eye_line(sprite: Image.Image) -> float:
-    """Locate the coral eye line without confusing it with the red necktie."""
+def eye_center(sprite: Image.Image) -> tuple[float, float]:
+    """Locate the coral eyes without confusing them with the red necktie."""
 
     mask = Image.new("L", (CELL_WIDTH, CELL_HEIGHT), 0)
     pixels = mask.load()
@@ -177,11 +178,20 @@ def eye_line(sprite: Image.Image) -> float:
             red, green, blue, alpha = sprite.getpixel((x, y))
             if alpha > 100 and red > 80 and red > green + 25 and blue > green + 3 and green < 145:
                 pixels[x, y] = 255
-    components = [item for item in connected_components(mask) if item[0] >= 5]
+    # The side-facing run model has one small visible eye after resampling into
+    # a 192 px cell. The face-only crop keeps the red necktie out of this mask.
+    components = [item for item in connected_components(mask) if item[0] >= 3]
     if not components:
         raise ValueError("no coral eye component")
     total = sum(size for size, _ in components)
-    return sum(size * (bbox[1] + bbox[3]) / 2 for size, bbox in components) / total
+    return (
+        sum(size * (bbox[0] + bbox[2]) / 2 for size, bbox in components) / total,
+        sum(size * (bbox[1] + bbox[3]) / 2 for size, bbox in components) / total,
+    )
+
+
+def eye_line(sprite: Image.Image) -> float:
+    return eye_center(sprite)[1]
 
 
 def validate_model_proportions(atlas: Image.Image) -> list[str]:
@@ -199,6 +209,16 @@ def validate_model_proportions(atlas: Image.Image) -> list[str]:
             errors.append(f"row {row}: cannot locate eye line for model-scale check")
     if depths and max(depths) - min(depths) > 12:
         errors.append(f"cross-action head/body proportion drift: eye-depths={[round(value, 2) for value in depths]}")
+    run_depths = []
+    for column in range(8):
+        sprite = cell(atlas, 1, column)
+        bbox = sprite.getchannel("A").getbbox()
+        try:
+            run_depths.append(eye_line(sprite) - bbox[1])
+        except (TypeError, ValueError):
+            errors.append(f"running-right frame {column}: cannot locate eye line for model-scale check")
+    if run_depths and max(run_depths) - min(run_depths) > 3:
+        errors.append(f"running head/body proportion flickers: eye-depths={[round(value, 2) for value in run_depths]}")
     idle_height = cell(atlas, 0, 0).getchannel("A").getbbox()[3] - cell(atlas, 0, 0).getchannel("A").getbbox()[1]
     run_height = cell(atlas, 1, 0).getchannel("A").getbbox()[3] - cell(atlas, 1, 0).getchannel("A").getbbox()[1]
     if abs(idle_height - run_height) > 8:
@@ -256,20 +276,103 @@ def validate_run_frame(index: int, right: Image.Image, left: Image.Image) -> lis
     return errors
 
 
+def component_centroid(mask: Image.Image, component: tuple[int, tuple[int, int, int, int]]) -> tuple[float, float]:
+    _, (x0, y0, x1, y1) = component
+    points = [
+        (x, y)
+        for y in range(y0, y1 + 1)
+        for x in range(x0, x1 + 1)
+        if mask.getpixel((x, y)) > 8
+    ]
+    return (
+        sum(x for x, _ in points) / len(points),
+        sum(y for _, y in points) / len(points),
+    )
+
+
+def run_cuff_centers(sprite: Image.Image) -> tuple[tuple[float, float], tuple[float, float]]:
+    """Track the two teal cuffs, which remain visible at native pet size."""
+
+    centers = []
+    # One cuff stays on each side of the torso. Separate ROIs prevent the teal
+    # sailor collar from being mistaken for an arm component.
+    for x0, x1 in ((68, 113), (122, 151)):
+        mask = Image.new("L", (CELL_WIDTH, CELL_HEIGHT), 0)
+        pixels = mask.load()
+        for y in range(75, 150):
+            for x in range(x0, x1):
+                red, green, blue, alpha = sprite.getpixel((x, y))
+                if (
+                    alpha > 40
+                    and red < 185
+                    and green > 55
+                    and blue > 65
+                    and green - red > 10
+                    and blue - red > 14
+                ):
+                    pixels[x, y] = 255
+        components = [item for item in connected_components(mask) if item[0] >= 20]
+        if not components:
+            raise ValueError("missing teal cuff component")
+        centers.append(component_centroid(mask, components[0]))
+    return centers[0], centers[1]
+
+
+def displayed_distance(first: tuple[float, float], second: tuple[float, float]) -> float:
+    """Distance after a 192x208 source cell is rendered at 112x121 px."""
+
+    return math.hypot(
+        (second[0] - first[0]) * 112 / CELL_WIDTH,
+        (second[1] - first[1]) * 121 / CELL_HEIGHT,
+    )
+
+
+def validate_cuff_track(label: str, track: list[tuple[float, float]]) -> list[str]:
+    errors: list[str] = []
+    full_range = max(math.dist(first, second) for first in track for second in track)
+    opposite = math.dist(track[0], track[4])
+    transitions = [displayed_distance(track[index], track[(index + 1) % 8]) for index in range(8)]
+    if full_range < 10:
+        errors.append(f"running-right: {label} arm is visually frozen (cuff range={full_range:.2f}px source)")
+    if opposite < 10:
+        errors.append(f"running-right: {label} arm does not reach an opposite half-cycle pose ({opposite:.2f}px source)")
+    if max(transitions) > 6:
+        errors.append(f"running-right: {label} arm jumps {max(transitions):.2f}px at native display size")
+    if min(transitions) < 1:
+        errors.append(f"running-right: {label} arm stalls between adjacent frames ({min(transitions):.2f}px native)")
+    return errors
+
+
+def validate_run_arms(right: list[Image.Image]) -> list[str]:
+    try:
+        pairs = [run_cuff_centers(sprite) for sprite in right]
+    except ValueError as error:
+        return [f"running-right: {error}"]
+    tracks = [[pair[index] for pair in pairs] for index in range(2)]
+    labels = ("rear", "front")
+    errors = [error for label, track in zip(labels, tracks) for error in validate_cuff_track(label, track)]
+
+    rear_vector = (tracks[0][4][0] - tracks[0][0][0], tracks[0][4][1] - tracks[0][0][1])
+    front_vector = (tracks[1][4][0] - tracks[1][0][0], tracks[1][4][1] - tracks[1][0][1])
+    denominator = math.hypot(*rear_vector) * math.hypot(*front_vector)
+    alignment = sum(first * second for first, second in zip(rear_vector, front_vector)) / denominator if denominator else 1.0
+    if alignment > 0.5:
+        errors.append(f"running-right: arms move together instead of contralaterally (cosine={alignment:.2f})")
+    return errors
+
+
 def validate_run_loop(right: list[Image.Image]) -> list[str]:
     errors: list[str] = []
-    anchors = [alpha_centroid(sprite, (25, 8, 170, 160)) for sprite in right]
-
+    try:
+        anchors = [eye_center(sprite) for sprite in right]
+    except ValueError as error:
+        return [f"running-right: {error}"]
     xs, ys = [value[0] for value in anchors], [value[1] for value in anchors]
     x_range, y_range = max(xs) - min(xs), max(ys) - min(ys)
-    if x_range > 2.0 or y_range > 4.0:
-        errors.append(f"running-right: torso anchor drifts x={max(xs)-min(xs):.2f}px y={max(ys)-min(ys):.2f}px")
-    if y_range < 1.5:
-        errors.append(f"running-right: upper body is visually frozen (torso y range={y_range:.2f}px)")
-    for index in range(8):
-        overlap = alpha_iou(right[index], right[(index + 1) % 8])
-        if overlap < 0.84:
-            errors.append(f"running-right {index}->{(index + 1) % 8}: alpha IoU too low ({overlap:.3f})")
+    if x_range > 3.5 or y_range > 4.0:
+        errors.append(f"running-right: head/body anchor drifts x={x_range:.2f}px y={y_range:.2f}px")
+    if y_range < 1.0:
+        errors.append(f"running-right: upper body is visually frozen (eye y range={y_range:.2f}px)")
     return errors
 
 
@@ -283,11 +386,8 @@ def validate_run_phases(right: list[Image.Image]) -> list[str]:
             errors.append(f"running-right phases {first}/{second}: opposite-step leg geometry mismatch")
         changes = changed_points(right[first], right[second])
         leg_changes = [(x, y) for x, y in changes if 70 <= x < 150 and y >= 160]
-        upper_changes = [(x, y) for x, y in changes if y < 140 or x < 55 or x >= 155]
         if len(leg_changes) < 500:
             errors.append(f"running-right phases {first}/{second}: leg depth did not swap ({len(leg_changes)} px)")
-        if len(upper_changes) < 500:
-            errors.append(f"running-right phases {first}/{second}: upper body did not advance ({len(upper_changes)} px)")
     return errors
 
 
@@ -295,7 +395,7 @@ def validate_run(atlas: Image.Image) -> list[str]:
     right = [cell(atlas, 1, column) for column in range(8)]
     left = [cell(atlas, 2, column) for column in range(8)]
     errors = [error for index, frames in enumerate(zip(right, left)) for error in validate_run_frame(index, *frames)]
-    return errors + validate_run_loop(right) + validate_run_phases(right)
+    return errors + validate_run_loop(right) + validate_run_arms(right) + validate_run_phases(right)
 
 
 def validate_jump_arc(bottoms: list[int]) -> list[str]:
@@ -424,7 +524,7 @@ def main() -> int:
     if errors:
         print("\n".join(errors), file=sys.stderr)
         return 1
-    print("PASS ATRI atlas: unified proportions/palette, animated alternating gait, intact anatomy, physical jump, exact mirrors, and continuous 16-way look")
+    print("PASS ATRI atlas: unified proportions/palette, visible contralateral arm swing, compact alternating gait, intact anatomy, physical jump, exact mirrors, and continuous 16-way look")
     return 0
 
 

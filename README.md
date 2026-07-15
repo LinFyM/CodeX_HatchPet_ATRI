@@ -7,6 +7,11 @@ an exact whole-frame mirror, so body direction, anatomy, and warm near/far-leg s
 
 ![ATRI animation contact sheet](qa/contact-sheet-extended.png)
 
+The run rows are also reviewed at the renderer's actual `112 × 121` pixel size and pixelated
+sampling. The labels show the real frame durations used by the desktop pet:
+
+![ATRI native-size running preview](qa/run-runtime-preview.png)
+
 ## Package
 
 The installable pet is in [`pet/`](pet/):
@@ -50,11 +55,18 @@ Deterministic validation confirms:
 - a canonical cross-action head/body scale with a dedicated proportion regression gate
 - no large purple, fuchsia, or chroma-key component in any used frame
 - a compact two-step jog: contact/load/pass/short-flight, then the same lower-body geometry with the
-  anatomical near/far legs exchanged while the upper body continues moving
+  anatomical near/far legs exchanged while both arms move contralaterally
 - exact whole-frame left/right running mirrors with preserved temporal order and leg shading
-- neutral-action eye-depth range of `8.853 px`; idle/run contact heights of `198/194 px`
-- run torso motion of `0.980 px` horizontally and `2.260 px` vertically
-- adjacent run silhouette IoU of `0.848–0.895` and a maximum warm-leg span of `57 px`
+- the actual renderer contract: columns `0→7` with no skipping, `120 ms` for frames 0–6,
+  a `220 ms` terminal hold, and a `1060 ms` cycle
+- neutral-action eye-depth range of `9.307 px`, per-run-frame eye-depth range of `1.500 px`, and
+  idle/run contact heights of `198/194 px`
+- stable run head/body anchors with `2.000 px` horizontal and vertical source-cell ranges
+- rear/front cuff travel of `14.329/26.166 px` in the source atlas and opposite-pose travel of
+  `11.404/26.166 px`
+- bounded adjacent cuff movement of `2.111–5.573 px` at the actual display size, with a
+  contralateral half-cycle cosine of `-0.033`
+- adjacent run silhouette IoU of `0.824–0.899` and a maximum warm-leg span of `57 px`
 - zero cool purple/blue pixels in every running-leg region
 - coherent crouch/launch/vertical-tuck-apex/descent/landing-absorption physics
 - exact unshifted look mirrors and a continuous clockwise 16-direction loop

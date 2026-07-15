@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "atlasSha256": "f9dc936a85a5fe40b83b045c76fa6f6d8408684b8ec5809d1314264f09102b07",
+  "atlasSha256": "74d36ac78ff5ab883831bf489cd64373fa7d3ab00908b39f3cdee4102b70bff3",
   "errors": [],
   "frames": [
     {
@@ -98,209 +98,209 @@
       "row": 1,
       "column": 0,
       "bbox": [
-        51,
+        49,
         8,
-        141,
+        144,
         202
       ],
-      "alphaPixels": 9822,
+      "alphaPixels": 10087,
       "connectedComponents": 1,
-      "largestComponentPixels": 9822
+      "largestComponentPixels": 10087
     },
     {
       "row": 1,
       "column": 1,
       "bbox": [
-        51,
-        8,
-        141,
+        50,
+        7,
+        145,
         204
       ],
-      "alphaPixels": 9663,
+      "alphaPixels": 10013,
       "connectedComponents": 1,
-      "largestComponentPixels": 9663
+      "largestComponentPixels": 10013
     },
     {
       "row": 1,
       "column": 2,
       "bbox": [
-        52,
+        50,
         7,
-        142,
+        148,
         201
       ],
-      "alphaPixels": 9476,
-      "connectedComponents": 1,
-      "largestComponentPixels": 9476
+      "alphaPixels": 9780,
+      "connectedComponents": 2,
+      "largestComponentPixels": 9779
     },
     {
       "row": 1,
       "column": 3,
       "bbox": [
-        52,
-        5,
+        50,
+        7,
         141,
         198
       ],
-      "alphaPixels": 9537,
+      "alphaPixels": 9683,
       "connectedComponents": 1,
-      "largestComponentPixels": 9537
+      "largestComponentPixels": 9683
     },
     {
       "row": 1,
       "column": 4,
       "bbox": [
-        51,
-        8,
+        49,
+        6,
         140,
         202
       ],
-      "alphaPixels": 9720,
-      "connectedComponents": 1,
-      "largestComponentPixels": 9720
+      "alphaPixels": 9811,
+      "connectedComponents": 2,
+      "largestComponentPixels": 9810
     },
     {
       "row": 1,
       "column": 5,
       "bbox": [
-        51,
+        49,
         8,
-        141,
+        140,
         204
       ],
-      "alphaPixels": 9697,
+      "alphaPixels": 9850,
       "connectedComponents": 1,
-      "largestComponentPixels": 9697
+      "largestComponentPixels": 9850
     },
     {
       "row": 1,
       "column": 6,
       "bbox": [
-        52,
+        49,
         8,
-        141,
+        147,
         201
       ],
-      "alphaPixels": 9434,
-      "connectedComponents": 1,
-      "largestComponentPixels": 9434
+      "alphaPixels": 9725,
+      "connectedComponents": 2,
+      "largestComponentPixels": 9724
     },
     {
       "row": 1,
       "column": 7,
       "bbox": [
-        52,
-        5,
-        141,
+        50,
+        7,
+        145,
         198
       ],
-      "alphaPixels": 9622,
+      "alphaPixels": 9790,
       "connectedComponents": 1,
-      "largestComponentPixels": 9622
+      "largestComponentPixels": 9790
     },
     {
       "row": 2,
       "column": 0,
       "bbox": [
-        51,
+        48,
         8,
-        141,
+        143,
         202
       ],
-      "alphaPixels": 9822,
+      "alphaPixels": 10087,
       "connectedComponents": 1,
-      "largestComponentPixels": 9822
+      "largestComponentPixels": 10087
     },
     {
       "row": 2,
       "column": 1,
       "bbox": [
-        51,
-        8,
-        141,
+        47,
+        7,
+        142,
         204
       ],
-      "alphaPixels": 9663,
+      "alphaPixels": 10013,
       "connectedComponents": 1,
-      "largestComponentPixels": 9663
+      "largestComponentPixels": 10013
     },
     {
       "row": 2,
       "column": 2,
       "bbox": [
-        50,
+        44,
         7,
-        140,
+        142,
         201
       ],
-      "alphaPixels": 9476,
-      "connectedComponents": 1,
-      "largestComponentPixels": 9476
+      "alphaPixels": 9780,
+      "connectedComponents": 2,
+      "largestComponentPixels": 9779
     },
     {
       "row": 2,
       "column": 3,
       "bbox": [
         51,
-        5,
-        140,
+        7,
+        142,
         198
       ],
-      "alphaPixels": 9537,
+      "alphaPixels": 9683,
       "connectedComponents": 1,
-      "largestComponentPixels": 9537
+      "largestComponentPixels": 9683
     },
     {
       "row": 2,
       "column": 4,
       "bbox": [
         52,
-        8,
-        141,
+        6,
+        143,
         202
       ],
-      "alphaPixels": 9720,
-      "connectedComponents": 1,
-      "largestComponentPixels": 9720
+      "alphaPixels": 9811,
+      "connectedComponents": 2,
+      "largestComponentPixels": 9810
     },
     {
       "row": 2,
       "column": 5,
       "bbox": [
-        51,
+        52,
         8,
-        141,
+        143,
         204
       ],
-      "alphaPixels": 9697,
+      "alphaPixels": 9850,
       "connectedComponents": 1,
-      "largestComponentPixels": 9697
+      "largestComponentPixels": 9850
     },
     {
       "row": 2,
       "column": 6,
       "bbox": [
-        51,
+        45,
         8,
-        140,
+        143,
         201
       ],
-      "alphaPixels": 9434,
-      "connectedComponents": 1,
-      "largestComponentPixels": 9434
+      "alphaPixels": 9725,
+      "connectedComponents": 2,
+      "largestComponentPixels": 9724
     },
     {
       "row": 2,
       "column": 7,
       "bbox": [
-        51,
-        5,
-        140,
+        47,
+        7,
+        142,
         198
       ],
-      "alphaPixels": 9622,
+      "alphaPixels": 9790,
       "connectedComponents": 1,
-      "largestComponentPixels": 9622
+      "largestComponentPixels": 9790
     },
     {
       "row": 3,

@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "atlasSha256": "f9dc936a85a5fe40b83b045c76fa6f6d8408684b8ec5809d1314264f09102b07",
+  "atlasSha256": "74d36ac78ff5ab883831bf489cd64373fa7d3ab00908b39f3cdee4102b70bff3",
   "spriteVersionNumber": 2,
   "atlas": {
     "columns": 8,
@@ -21,43 +21,100 @@
       8
     ],
     "eyeDepthsPixels": [
-      54.984,
-      50.5,
+      55.382,
+      48.0,
       49.471,
-      52.5,
+      52.9,
       46.889,
-      49.75,
+      55.438,
       46.13
     ],
-    "eyeDepthRangePixels": 8.853,
+    "eyeDepthRangePixels": 9.307,
+    "runEyeDepthsPixels": [
+      48.0,
+      47.5,
+      48.0,
+      48.5,
+      49.0,
+      48.5,
+      48.0,
+      47.5
+    ],
+    "runEyeDepthRangePixels": 1.5,
     "idleHeightPixels": 198,
     "runContactHeightPixels": 194
   },
   "running": {
     "gait": "contact/load/pass/short-flight, repeated with anatomical near/far leg identity exchanged",
-    "torsoAnchorXRangePixels": 0.98,
-    "torsoAnchorYRangePixels": 2.26,
+    "renderer": {
+      "displaySizePixels": [
+        112,
+        121
+      ],
+      "frameDurationsMs": [
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        220
+      ],
+      "cycleDurationMs": 1060,
+      "sequence": "columns 0 through 7 without skipping",
+      "sampling": "pixelated nearest-neighbor"
+    },
+    "headBodyAnchorXRangePixels": 2.0,
+    "headBodyAnchorYRangePixels": 2.0,
     "adjacentAlphaIou": [
-      0.8678,
-      0.8791,
-      0.8947,
-      0.8575,
-      0.8826,
-      0.892,
-      0.8951,
-      0.848
+      0.8242,
+      0.8739,
+      0.8993,
+      0.8358,
+      0.8507,
+      0.8708,
+      0.8697,
+      0.8258
     ],
-    "oppositeStepShadeChangePixels": [
-      5406,
-      4655,
-      5712,
-      4934
-    ],
-    "oppositeStepUpperBodyChangePixels": [
-      4648,
-      3873,
-      5071,
-      4206
+    "armCuffRangeSourcePixels": {
+      "rear": 14.329,
+      "front": 26.166
+    },
+    "armCuffOppositePoseSourcePixels": {
+      "rear": 11.404,
+      "front": 26.166
+    },
+    "armAdjacentNativeDisplayPixels": {
+      "rear": [
+        3.048,
+        4.857,
+        4.346,
+        3.887,
+        4.369,
+        4.346,
+        4.892,
+        3.048
+      ],
+      "front": [
+        5.549,
+        3.441,
+        5.573,
+        2.899,
+        2.111,
+        5.573,
+        3.829,
+        5.549
+      ],
+      "minimum": 2.111,
+      "maximum": 5.573
+    },
+    "armOppositeMotionCosine": -0.033,
+    "oppositeStepLegShadeChangePixels": [
+      680,
+      699,
+      570,
+      622
     ],
     "warmLegHorizontalSpansPixels": [
       57,
@@ -100,5 +157,6 @@
   "review": "qa/motion-review.json",
   "validation": "qa/validation-extended.json",
   "contactSheet": "qa/contact-sheet-extended.png",
+  "runtimeRunPreview": "qa/run-runtime-preview.png",
   "directionSheet": "qa/look-directions.png"
 }
