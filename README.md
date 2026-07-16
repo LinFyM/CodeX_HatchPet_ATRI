@@ -2,8 +2,9 @@
 
 A Codex-compatible v2 animated desktop pet inspired by ATRI from *ATRI -My Dear Moments-*.
 The current atlas uses one consistent chibi model and warm ash-silver palette across all actions.
-The run uses an animated upper body and a compact contact/load/pass/flight cycle; the left cycle is
-an exact whole-frame mirror, so body direction, anatomy, and warm near/far-leg shading turn together.
+The run uses monotonic contralateral arm swings and a compact contact/load/pass/flight cycle; the left
+cycle is an exact whole-frame mirror, so body direction, anatomy, and warm near/far-leg shading turn
+together.
 
 ![ATRI animation contact sheet](qa/contact-sheet-extended.png)
 
@@ -11,6 +12,11 @@ The run rows are also reviewed at the renderer's actual `112 × 121` pixel size 
 sampling. The labels show the real frame durations used by the desktop pet:
 
 ![ATRI native-size running preview](qa/run-runtime-preview.png)
+
+The jump is likewise reviewed at native size against the idle model. The sequence keeps one head/torso
+proportion while moving through crouch, grounded extension, rising apex tuck, touchdown, and absorption:
+
+![ATRI native-size jump preview](qa/jump-runtime-preview.png)
 
 ## Package
 
@@ -55,20 +61,26 @@ Deterministic validation confirms:
 - a canonical cross-action head/body scale with a dedicated proportion regression gate
 - no large purple, fuchsia, or chroma-key component in any used frame
 - a compact two-step jog: contact/load/pass/short-flight, then the same lower-body geometry with the
-  anatomical near/far legs exchanged while both arms move contralaterally
+  anatomical near/far legs exchanged while both arms move contralaterally and monotonically through
+  each half-cycle
 - exact whole-frame left/right running mirrors with preserved temporal order and leg shading
 - the actual renderer contract: columns `0→7` with no skipping, `120 ms` for frames 0–6,
   a `220 ms` terminal hold, and a `1060 ms` cycle
-- neutral-action eye-depth range of `9.307 px`, per-run-frame eye-depth range of `1.500 px`, and
-  idle/run contact heights of `198/194 px`
-- stable run head/body anchors with `2.000 px` horizontal and vertical source-cell ranges
-- rear/front cuff travel of `14.329/26.166 px` in the source atlas and opposite-pose travel of
-  `11.404/26.166 px`
-- bounded adjacent cuff movement of `2.111–5.573 px` at the actual display size, with a
-  contralateral half-cycle cosine of `-0.033`
-- adjacent run silhouette IoU of `0.824–0.899` and a maximum warm-leg span of `57 px`
+- neutral-action eye-depth range of `9.307 px`, per-run-frame eye-depth range of `0.500 px`, and
+  idle/run contact heights of `198/197 px`
+- stable run head/body anchors with `1.000/2.000 px` horizontal/vertical source-cell ranges
+- rear/front cuff travel and opposite-pose travel of `28.951/18.895 px`
+- monotonic rear-arm projection `0→0.201→0.512→0.716→1` and front-arm projection
+  `0→0.340→0.703→0.943→1`, followed by monotonic return
+- bounded adjacent cuff movement of `1.570–5.416 px` at the actual display size, with a
+  contralateral half-cycle cosine of `-0.227`
+- adjacent run silhouette IoU of `0.832–0.884` and a maximum warm-leg span of `57 px`
 - zero cool purple/blue pixels in every running-leg region
-- coherent crouch/launch/vertical-tuck-apex/descent/landing-absorption physics
+- jump eye spacing of `18.040–18.860 px` against idle `18.491 px`, with upright jump button spacing
+  of `13.000/11.821 px` against idle `13.443 px`
+- a measured jump eye-line arc of `92.153→60.481→53.693→59.750→92.153 px`, proving that the body
+  rises and falls rather than merely tucking the legs in place
+- coherent crouch/grounded-extension/vertical-tuck-apex/touchdown/landing-absorption physics
 - exact unshifted look mirrors and a continuous clockwise 16-direction loop
 - SHA-bound native-size and enlarged frame-strip review of every action
 - no structural validation errors

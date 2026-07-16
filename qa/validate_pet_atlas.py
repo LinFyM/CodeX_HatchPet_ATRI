@@ -8,7 +8,9 @@ import json
 import math
 import sys
 from collections import deque
+from itertools import combinations
 from pathlib import Path
+from statistics import median
 
 from PIL import Image, ImageChops, ImageOps
 
@@ -194,6 +196,82 @@ def eye_line(sprite: Image.Image) -> float:
     return eye_center(sprite)[1]
 
 
+def front_eye_pair(sprite: Image.Image) -> tuple[tuple[float, float], tuple[float, float]]:
+    """Locate both front-facing eyes for cross-action head-scale checks."""
+
+    mask = Image.new("L", sprite.size, 0)
+    pixels = mask.load()
+    for y in range(0, round(sprite.height * 0.46)):
+        for x in range(sprite.width):
+            red, green, blue, alpha = sprite.getpixel((x, y))
+            if alpha > 72 and red > 82 and red > green + 24 and blue > green + 2 and green < 150:
+                pixels[x, y] = 255
+    candidates = [
+        (size, component_centroid(mask, (size, bbox)))
+        for size, bbox in connected_components(mask)
+        if size >= 3
+    ]
+    best: tuple[float, tuple[float, float], tuple[float, float]] | None = None
+    for first, second in combinations(candidates, 2):
+        first_size, first_center = first
+        second_size, second_center = second
+        left, right = sorted((first_center, second_center))
+        spacing = right[0] - left[0]
+        if not sprite.width * 0.08 <= spacing <= sprite.width * 0.28:
+            continue
+        if abs(left[1] - right[1]) > sprite.height * 0.055:
+            continue
+        area_ratio = max(first_size, second_size) / min(first_size, second_size)
+        if area_ratio > 2.1:
+            continue
+        score = first_size + second_size - abs(left[1] - right[1]) * 3 - abs(area_ratio - 1) * 12
+        if best is None or score > best[0]:
+            best = (score, left, right)
+    if best is None:
+        raise ValueError("cannot find coherent front-facing eye pair")
+    return best[1], best[2]
+
+
+def gold_button_gap(sprite: Image.Image) -> float:
+    """Measure the three aligned gold dress buttons without matching the tie."""
+
+    mask = Image.new("L", sprite.size, 0)
+    pixels = mask.load()
+    for y in range(round(sprite.height * 0.42), round(sprite.height * 0.79)):
+        for x in range(round(sprite.width * 0.38), round(sprite.width * 0.63)):
+            red, green, blue, alpha = sprite.getpixel((x, y))
+            if (
+                alpha > 72
+                and red > 120
+                and 50 < green < 205
+                and blue < 135
+                and red - green > 14
+                and green - blue > 4
+            ):
+                pixels[x, y] = 255
+    centers = [
+        (*component_centroid(mask, (size, bbox)), size)
+        for size, bbox in connected_components(mask)
+        if 3 <= size <= max(90, sprite.width * sprite.height // 250)
+    ]
+    best: tuple[float, list[tuple[float, float, int]]] | None = None
+    for group in combinations(centers, 3):
+        ordered = sorted(group, key=lambda item: item[1])
+        gaps = (ordered[1][1] - ordered[0][1], ordered[2][1] - ordered[1][1])
+        if min(gaps) <= 2:
+            continue
+        x_range = max(item[0] for item in ordered) - min(item[0] for item in ordered)
+        if x_range > sprite.width * 0.055 or max(gaps) / min(gaps) > 1.55:
+            continue
+        score = abs(gaps[0] - gaps[1]) + x_range
+        if best is None or score < best[0]:
+            best = (score, ordered)
+    if best is None:
+        raise ValueError("cannot find three aligned dress buttons")
+    ys = [item[1] for item in best[1]]
+    return float(median((ys[1] - ys[0], ys[2] - ys[1])))
+
+
 def validate_model_proportions(atlas: Image.Image) -> list[str]:
     """Keep every neutral action on one canonical chibi model scale."""
 
@@ -358,6 +436,45 @@ def validate_run_arms(right: list[Image.Image]) -> list[str]:
     alignment = sum(first * second for first, second in zip(rear_vector, front_vector)) / denominator if denominator else 1.0
     if alignment > 0.5:
         errors.append(f"running-right: arms move together instead of contralaterally (cosine={alignment:.2f})")
+    return errors + validate_run_arm_trajectory(right)
+
+
+def validate_run_arm_trajectory(right: list[Image.Image]) -> list[str]:
+    """Reject half-cycles that reverse, overshoot, or hold a cuff mid-swing."""
+
+    try:
+        pairs = [run_cuff_centers(sprite) for sprite in right]
+    except ValueError as error:
+        return [f"running-right: {error}"]
+    tracks = [[pair[index] for pair in pairs] for index in range(2)]
+    errors: list[str] = []
+    for label, track in zip(("rear", "front"), tracks):
+        vector = (track[4][0] - track[0][0], track[4][1] - track[0][1])
+        denominator = vector[0] ** 2 + vector[1] ** 2
+        if denominator <= 1e-6:
+            errors.append(f"running-right: {label} arm has no half-cycle trajectory")
+            continue
+        projections = [
+            (
+                (point[0] - track[0][0]) * vector[0]
+                + (point[1] - track[0][1]) * vector[1]
+            )
+            / denominator
+            for point in track
+        ]
+        forward = [projections[index + 1] - projections[index] for index in range(4)]
+        returning = [projections[index] - projections[index + 1] for index in range(4, 7)]
+        returning.append(projections[7] - projections[0])
+        if min(forward + returning) <= 0.04:
+            errors.append(
+                f"running-right: {label} arm reverses or holds within a half-cycle "
+                f"(projection={[round(value, 3) for value in projections]})"
+            )
+        if min(projections) < -0.08 or max(projections) > 1.08:
+            errors.append(
+                f"running-right: {label} arm overshoots its endpoint path "
+                f"(projection={[round(value, 3) for value in projections]})"
+            )
     return errors
 
 
@@ -402,11 +519,11 @@ def validate_jump_arc(bottoms: list[int]) -> list[str]:
     crouch, launch, apex, descent, settle = bottoms
     checks = (
         crouch >= 202,
-        190 <= launch <= 198,
-        apex <= 165,
-        launch - apex >= 28,
-        194 <= descent <= 201,
-        descent - apex >= 30,
+        launch >= 202,
+        apex <= 170,
+        launch - apex >= 32,
+        descent >= 202,
+        descent - apex >= 32,
         settle >= 202,
     )
     return [] if all(checks) else [f"jump arc is not crouch/launch/apex/descent/settle: bottoms={bottoms}"]
@@ -427,13 +544,83 @@ def validate_jump_apex(apex: Image.Image) -> list[str]:
     return errors
 
 
+def validate_jump_head_arc(frames: list[Image.Image]) -> list[str]:
+    """Confirm that the body rises and falls, rather than only tucking its legs."""
+
+    eye_lines: list[float] = []
+    for index, sprite in enumerate(frames):
+        try:
+            left, right = front_eye_pair(sprite)
+        except ValueError as error:
+            return [f"jump frame {index}: {error}"]
+        eye_lines.append((left[1] + right[1]) / 2)
+    crouch, launch, apex, descent, settle = eye_lines
+    checks = (
+        crouch - launch >= 20,
+        launch - apex >= 5,
+        descent - apex >= 5,
+        settle - descent >= 20,
+        abs(crouch - settle) <= 1,
+    )
+    return [] if all(checks) else [
+        f"jump body does not follow a rise/apex/fall arc: eye-lines={[round(value, 2) for value in eye_lines]}"
+    ]
+
+
+def validate_jump_proportions(atlas: Image.Image) -> list[str]:
+    """Lock jump head size and torso spacing to the canonical idle model."""
+
+    idle = cell(atlas, 0, 0)
+    try:
+        idle_left, idle_right = front_eye_pair(idle)
+        idle_eye_spacing = idle_right[0] - idle_left[0]
+        idle_button_gap = gold_button_gap(idle)
+    except ValueError as error:
+        return [f"idle: {error}"]
+    canonical_ratio = idle_button_gap / idle_eye_spacing
+    errors: list[str] = []
+    upright_ratio_fractions = {1: 0.84, 3: 0.82}
+    for index in range(5):
+        sprite = cell(atlas, 4, index)
+        try:
+            left, right = front_eye_pair(sprite)
+            eye_spacing = right[0] - left[0]
+        except ValueError as error:
+            errors.append(f"jump frame {index}: {error}")
+            continue
+        if abs(eye_spacing - idle_eye_spacing) > 1.4:
+            errors.append(
+                f"jump frame {index}: head scale drifts from idle "
+                f"(eye spacing {eye_spacing:.2f}px vs {idle_eye_spacing:.2f}px)"
+            )
+        if index not in upright_ratio_fractions:
+            continue
+        try:
+            button_gap = gold_button_gap(sprite)
+        except ValueError as error:
+            errors.append(f"jump frame {index}: {error}")
+            continue
+        ratio = button_gap / eye_spacing
+        if ratio < canonical_ratio * upright_ratio_fractions[index]:
+            errors.append(
+                f"jump frame {index}: torso is compressed relative to head "
+                f"(button/eye ratio {ratio:.3f}, idle {canonical_ratio:.3f})"
+            )
+    return errors
+
+
 def validate_jump(atlas: Image.Image) -> list[str]:
     frames = [cell(atlas, 4, column) for column in range(5)]
     boxes = [sprite.getchannel("A").getbbox() for sprite in frames]
     if any(bbox is None for bbox in boxes):
         return ["jump: empty frame"]
     bottoms = [bbox[3] for bbox in boxes if bbox]
-    errors = validate_jump_arc(bottoms) + validate_jump_apex(frames[2])
+    errors = (
+        validate_jump_arc(bottoms)
+        + validate_jump_head_arc(frames)
+        + validate_jump_apex(frames[2])
+        + validate_jump_proportions(atlas)
+    )
     if alpha_iou(frames[0], frames[4]) < 0.90:
         errors.append("jump landing does not return to the crouch footprint")
     return errors
@@ -524,7 +711,7 @@ def main() -> int:
     if errors:
         print("\n".join(errors), file=sys.stderr)
         return 1
-    print("PASS ATRI atlas: unified proportions/palette, visible contralateral arm swing, compact alternating gait, intact anatomy, physical jump, exact mirrors, and continuous 16-way look")
+    print("PASS ATRI atlas: unified proportions/palette, monotonic contralateral arm swing, compact alternating gait, intact anatomy, physical jump, exact mirrors, and continuous 16-way look")
     return 0
 
 

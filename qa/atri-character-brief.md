@@ -53,9 +53,10 @@ Official sources:
 - Running left: framewise whole-body mirror of the approved right-running cycle, preserving temporal
   order.
 - Waving: bright, eager greeting using only the arm and hand pose; no motion arcs.
-- Jumping: joyful high-performance hop with crouched anticipation, leg-driven launch, a vertical apex
-  tuck under the pelvis, feet-down descent, and knee-flexed landing absorption. No mid-air forward
-  double kick, unexplained torso lock, or floor cue.
+- Jumping: joyful high-performance hop with crouched anticipation, grounded leg-driven extension, a
+  visibly rising vertical apex tuck under the pelvis, feet-down touchdown, and knee-flexed absorption.
+  Head scale and torso spacing stay tied to idle. No mid-air forward double kick, in-place leg-only
+  tuck, unexplained torso lock, or floor cue.
 - Failed: the comic "high-performance but unexpectedly clumsy" contrast, shown through expression and
   posture only.
 - Waiting: hopeful request for approval/help, with attentive eye contact and hands gathered near the
@@ -73,8 +74,9 @@ Official sources:
 - All frames preserve one character identity and remain legible at in-app display size.
 - Neutral actions share one eye/head scale and planted model height; running may not use an oversized
   head, shortened torso, or independently drifting chibi proportion.
-- Directional running is a visibly alternating two-step loop with no repeated-foot cadence, reversed
-  limbs, detached anatomy, clipping, seams, or edge tearing.
+- Directional running is a visibly alternating two-step loop with monotonic contralateral arm
+  half-cycles and no repeated-foot cadence, reversed limbs, detached anatomy, clipping, seams, or edge
+  tearing.
 - All nine standard states are immediately distinguishable and character-specific.
 - All 16 look directions pass cardinal semantics, ordered-loop continuity, scale, baseline, edge, and
   transparency review.
@@ -86,4 +88,4 @@ Official sources:
 
 - No new application format, custom runtime logic, audio, text bubbles, or external props.
 - No copying official images into the shipped package.
-- No one-cell repairs or limb grafting across independently generated character bodies.
+- No unvalidated one-cell repairs or cross-model limb grafts that change scale, shading, or anatomy.

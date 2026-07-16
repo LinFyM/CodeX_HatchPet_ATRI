@@ -1,7 +1,7 @@
 {
   "ok": true,
-  "atlasSha256": "74d36ac78ff5ab883831bf489cd64373fa7d3ab00908b39f3cdee4102b70bff3",
-  "reviewDate": "2026-07-15",
+  "atlasSha256": "754dbfd9c79f4680da39292fd9790f49ffb952f931156ecaafc45afda267bec8",
+  "reviewDate": "2026-07-16",
   "reviewedActions": [
     "idle",
     "run-right",
@@ -17,6 +17,7 @@
   "inspectionModes": [
     "native-size full atlas contact sheet",
     "112x121 pixelated right/left run strips at the renderer's 120/220 ms cadence",
+    "112x121 pixelated idle/jump strip at the renderer's 140/280 ms cadence",
     "3x full-body run strip",
     "solid-color run compositing strip",
     "5x right/left leg strips",
@@ -27,8 +28,8 @@
   "findings": {
     "model": "cross-action eye/head scale and planted height use one canonical chibi proportion; no oversized running head",
     "palette": "ash-silver/blonde hair has no purple or chroma-key pockets; coral-magenta is reserved for the eyes",
-    "running": "compact contact/load/pass/short-flight legs with visible contralateral cuff trajectories, bounded adjacent motion, warm near/far shading, and an exact whole-frame left mirror",
-    "jump": "crouch, launch, vertical apex tuck under pelvis, feet-down descent, and crouched landing absorption",
+    "running": "compact contact/load/pass/short-flight legs with monotonic contralateral cuff trajectories, bounded adjacent motion, subtle body bob, warm near/far shading, and an exact whole-frame left mirror",
+    "jump": "idle-matched head and torso proportions with crouch, grounded extension, a visibly rising vertical apex tuck under the pelvis, feet-down touchdown, and crouched absorption",
     "wave": "same raised open hand in all frames; no finger-sign teleport",
     "failed": "surprise to head droop to recovery with both arms retained",
     "waiting": "hands remain clasped at chest",
