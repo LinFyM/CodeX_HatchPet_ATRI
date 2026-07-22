@@ -47,9 +47,9 @@ Official sources:
 - Idle: calm breathing, soft hair sway, tiny blink, and a restrained proud smile.
 - Running right: a cute upright eight-frame two-step jog, never a 100 m sprint. Frames 0–3 form one
   compact contact/load/pass/short-flight half-step; frames 4–7 reuse the same readable lower-body
-  geometry with the anatomical near/far legs exchanged. The torso has a subtle phase bob, arms and
-  hair advance through all eight frames, feet remain connected, and far-leg depth uses warm peach—not
-  purple, blue, or gray.
+  geometry with the anatomical near/far legs exchanged. The torso has a subtle phase bob, both arms
+  exchange equally high and low endpoint poses through connected bent sleeves, hair advances through
+  all eight frames, feet remain connected, and far-leg depth uses warm peach—not purple, blue, or gray.
 - Running left: framewise whole-body mirror of the approved right-running cycle, preserving temporal
   order.
 - Waving: bright, eager greeting using only the arm and hand pose; no motion arcs.
@@ -74,9 +74,9 @@ Official sources:
 - All frames preserve one character identity and remain legible at in-app display size.
 - Neutral actions share one eye/head scale and planted model height; running may not use an oversized
   head, shortened torso, or independently drifting chibi proportion.
-- Directional running is a visibly alternating two-step loop with monotonic contralateral arm
-  half-cycles and no repeated-foot cadence, reversed limbs, detached anatomy, clipping, seams, or edge
-  tearing.
+- Directional running is a visibly alternating two-step loop with balanced contralateral arm
+  half-cycles, matched high/low endpoint separation, and no repeated-foot cadence, reversed limbs,
+  detached anatomy, clipping, seams, or edge tearing.
 - All nine standard states are immediately distinguishable and character-specific.
 - All 16 look directions pass cardinal semantics, ordered-loop continuity, scale, baseline, edge, and
   transparency review.

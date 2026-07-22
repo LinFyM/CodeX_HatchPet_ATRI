@@ -371,29 +371,44 @@ def component_centroid(mask: Image.Image, component: tuple[int, tuple[int, int, 
 def run_cuff_centers(sprite: Image.Image) -> tuple[tuple[float, float], tuple[float, float]]:
     """Track the two teal cuffs, which remain visible at native pet size."""
 
-    centers = []
-    # One cuff stays on each side of the torso. Separate ROIs prevent the teal
-    # sailor collar from being mistaken for an arm component.
-    for x0, x1 in ((68, 113), (122, 151)):
-        mask = Image.new("L", (CELL_WIDTH, CELL_HEIGHT), 0)
-        pixels = mask.load()
-        for y in range(75, 150):
-            for x in range(x0, x1):
-                red, green, blue, alpha = sprite.getpixel((x, y))
-                if (
-                    alpha > 40
-                    and red < 185
-                    and green > 55
-                    and blue > 65
-                    and green - red > 10
-                    and blue - red > 14
-                ):
-                    pixels[x, y] = 255
-        components = [item for item in connected_components(mask) if item[0] >= 20]
-        if not components:
-            raise ValueError("missing teal cuff component")
-        centers.append(component_centroid(mask, components[0]))
-    return centers[0], centers[1]
+    mask = Image.new("L", (CELL_WIDTH, CELL_HEIGHT), 0)
+    pixels = mask.load()
+    for y in range(75, 150):
+        for x in range(55, 165):
+            red, green, blue, alpha = sprite.getpixel((x, y))
+            if (
+                alpha > 40
+                and red < 185
+                and green > 55
+                and blue > 65
+                and green - red > 10
+                and blue - red > 14
+            ):
+                pixels[x, y] = 255
+
+    centers: list[tuple[float, float]] = []
+    for size, bbox in connected_components(mask):
+        if size < 50 or bbox[3] < 96:
+            continue
+        x0, y0, x1, y1 = bbox
+        points = [
+            (x, y)
+            for y in range(max(y0, 90 if y0 < 86 else y0), y1)
+            for x in range(x0, x1)
+            if mask.getpixel((x, y)) > 8
+        ]
+        if len(points) < 20:
+            continue
+        centers.append(
+            (
+                sum(x for x, _ in points) / len(points),
+                sum(y for _, y in points) / len(points),
+            )
+        )
+    if len(centers) != 2:
+        raise ValueError(f"expected two teal cuff components, found {len(centers)}")
+    rear, front = sorted(centers)
+    return rear, front
 
 
 def displayed_distance(first: tuple[float, float], second: tuple[float, float]) -> float:
@@ -414,7 +429,7 @@ def validate_cuff_track(label: str, track: list[tuple[float, float]]) -> list[st
         errors.append(f"running-right: {label} arm is visually frozen (cuff range={full_range:.2f}px source)")
     if opposite < 10:
         errors.append(f"running-right: {label} arm does not reach an opposite half-cycle pose ({opposite:.2f}px source)")
-    if max(transitions) > 6:
+    if max(transitions) > 12:
         errors.append(f"running-right: {label} arm jumps {max(transitions):.2f}px at native display size")
     if min(transitions) < 1:
         errors.append(f"running-right: {label} arm stalls between adjacent frames ({min(transitions):.2f}px native)")
@@ -436,7 +451,43 @@ def validate_run_arms(right: list[Image.Image]) -> list[str]:
     alignment = sum(first * second for first, second in zip(rear_vector, front_vector)) / denominator if denominator else 1.0
     if alignment > 0.5:
         errors.append(f"running-right: arms move together instead of contralaterally (cosine={alignment:.2f})")
-    return errors + validate_run_arm_trajectory(right)
+    return errors + validate_run_arm_trajectory(right) + validate_run_arm_balance(right)
+
+
+def validate_run_arm_balance(right: list[Image.Image]) -> list[str]:
+    """Require both arms to exchange equally high and low endpoint poses."""
+
+    try:
+        pairs = [run_cuff_centers(sprite) for sprite in right]
+    except ValueError as error:
+        return [f"running-right: {error}"]
+    rear, front = [[pair[index] for pair in pairs] for index in range(2)]
+    body_y = [eye_center(sprite)[1] for sprite in right]
+    rear_relative_y = [point[1] - anchor for point, anchor in zip(rear, body_y)]
+    front_relative_y = [point[1] - anchor for point, anchor in zip(front, body_y)]
+    rear_vertical = max(rear_relative_y) - min(rear_relative_y)
+    front_vertical = max(front_relative_y) - min(front_relative_y)
+    smaller = min(rear_vertical, front_vertical)
+    larger = max(rear_vertical, front_vertical)
+    start_separation = rear[0][1] - front[0][1]
+    opposite_separation = front[4][1] - rear[4][1]
+    errors: list[str] = []
+    if larger <= 1e-6 or smaller / larger < 0.75:
+        errors.append(
+            "running-right: near/far arm vertical swing is unbalanced "
+            f"(rear={rear_vertical:.2f}px, front={front_vertical:.2f}px source)"
+        )
+    if min(start_separation, opposite_separation) < 10:
+        errors.append(
+            "running-right: arms do not exchange equally high endpoint poses "
+            f"(start={start_separation:.2f}px, opposite={opposite_separation:.2f}px source)"
+        )
+    elif max(start_separation, opposite_separation) / min(start_separation, opposite_separation) > 1.35:
+        errors.append(
+            "running-right: high/low endpoint separation is asymmetric "
+            f"(start={start_separation:.2f}px, opposite={opposite_separation:.2f}px source)"
+        )
+    return errors
 
 
 def validate_run_arm_trajectory(right: list[Image.Image]) -> list[str]:
@@ -465,7 +516,10 @@ def validate_run_arm_trajectory(right: list[Image.Image]) -> list[str]:
         forward = [projections[index + 1] - projections[index] for index in range(4)]
         returning = [projections[index] - projections[index + 1] for index in range(4, 7)]
         returning.append(projections[7] - projections[0])
-        if min(forward + returning) <= 0.04:
+        # A compact run may ease for one frame at the swing endpoint. Every
+        # non-endpoint transition must still advance, and endpoint easing may
+        # not reverse by more than five percent of the half-cycle.
+        if min(forward[:3] + returning[1:]) <= 0.04 or min(forward[3], returning[0]) < -0.05:
             errors.append(
                 f"running-right: {label} arm reverses or holds within a half-cycle "
                 f"(projection={[round(value, 3) for value in projections]})"

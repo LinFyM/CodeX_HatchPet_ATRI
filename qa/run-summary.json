@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "atlasSha256": "754dbfd9c79f4680da39292fd9790f49ffb952f931156ecaafc45afda267bec8",
+  "atlasSha256": "8f36d0b441ad36fa04b3356d98e49ff89ca26859685fc839b988c10b8c475b99",
   "spriteVersionNumber": 2,
   "atlas": {
     "columns": 8,
@@ -32,15 +32,15 @@
     "eyeDepthRangePixels": 9.307,
     "runEyeDepthsPixels": [
       51.5,
-      51.5,
-      52.0,
-      51.5,
-      51.5,
-      51.5,
-      52.0,
-      51.5
+      51.0,
+      50.5,
+      50.5,
+      51.0,
+      50.5,
+      50.5,
+      51.0
     ],
-    "runEyeDepthRangePixels": 0.5,
+    "runEyeDepthRangePixels": 1.0,
     "idleHeightPixels": 198,
     "runContactHeightPixels": 197
   },
@@ -65,74 +65,82 @@
       "sequence": "columns 0 through 7 without skipping",
       "sampling": "pixelated nearest-neighbor"
     },
-    "headBodyAnchorXRangePixels": 1.0,
-    "headBodyAnchorYRangePixels": 2.0,
+    "headBodyAnchorXRangePixels": 2.0,
+    "headBodyAnchorYRangePixels": 2.5,
     "adjacentAlphaIou": [
-      0.8319,
-      0.8657,
-      0.8762,
-      0.8585,
-      0.8558,
-      0.8505,
-      0.8839,
-      0.8599
+      0.8165,
+      0.8389,
+      0.8947,
+      0.8629,
+      0.844,
+      0.8434,
+      0.8633,
+      0.8474
     ],
     "armCuffRangeSourcePixels": {
-      "rear": 28.951,
-      "front": 18.895
+      "rear": 38.762,
+      "front": 18.748
     },
     "armCuffOppositePoseSourcePixels": {
-      "rear": 28.951,
-      "front": 18.895
+      "rear": 38.762,
+      "front": 18.748
+    },
+    "armVerticalTravelBodyRelativeSourcePixels": {
+      "rear": 22.609,
+      "front": 18.147
+    },
+    "armEndpointHeightSeparationSourcePixels": {
+      "frontHigh": 17.423,
+      "rearHigh": 17.942
     },
     "armAdjacentNativeDisplayPixels": {
       "rear": [
-        4.198,
-        5.29,
-        3.493,
-        5.339,
-        5.084,
-        3.355,
-        5.416,
-        5.066
+        5.111,
+        7.797,
+        6.668,
+        5.976,
+        5.665,
+        7.486,
+        8.729,
+        5.722
       ],
       "front": [
-        3.866,
-        4.201,
-        2.769,
-        1.57,
-        2.008,
-        4.998,
-        2.075,
-        2.372
+        3.641,
+        4.441,
+        2.746,
+        1.545,
+        1.986,
+        5.16,
+        1.927,
+        2.296
       ],
-      "minimum": 1.57,
-      "maximum": 5.416
+      "minimum": 1.545,
+      "maximum": 8.729
     },
     "armHalfCycleProjection": {
       "rear": [
         0.0,
-        0.201,
-        0.512,
-        0.716,
+        0.134,
+        0.451,
+        0.737,
         1.0,
-        0.707,
-        0.512,
-        0.21
+        0.761,
+        0.451,
+        0.111
       ],
       "front": [
         0.0,
-        0.34,
-        0.703,
-        0.943,
+        0.321,
+        0.709,
+        0.945,
         1.0,
-        0.843,
-        0.389,
-        0.206
+        0.844,
+        0.372,
+        0.2
       ],
       "monotonicForwardAndReturn": true
     },
-    "armOppositeMotionCosine": -0.227,
+    "armOppositeMotionCosine": -0.731,
     "oppositeStepLegShadeChangePixels": [
       680,
       699,

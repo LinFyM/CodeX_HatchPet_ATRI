@@ -2,9 +2,9 @@
 
 A Codex-compatible v2 animated desktop pet inspired by ATRI from *ATRI -My Dear Moments-*.
 The current atlas uses one consistent chibi model and warm ash-silver palette across all actions.
-The run uses monotonic contralateral arm swings and a compact contact/load/pass/flight cycle; the left
-cycle is an exact whole-frame mirror, so body direction, anatomy, and warm near/far-leg shading turn
-together.
+The run uses monotonic contralateral arm swings with a balanced high/low endpoint exchange and a
+compact contact/load/pass/flight cycle; the left cycle is an exact whole-frame mirror, so body
+direction, anatomy, and warm near/far-leg shading turn together.
 
 ![ATRI animation contact sheet](qa/contact-sheet-extended.png)
 
@@ -61,20 +61,21 @@ Deterministic validation confirms:
 - a canonical cross-action head/body scale with a dedicated proportion regression gate
 - no large purple, fuchsia, or chroma-key component in any used frame
 - a compact two-step jog: contact/load/pass/short-flight, then the same lower-body geometry with the
-  anatomical near/far legs exchanged while both arms move contralaterally and monotonically through
-  each half-cycle
+  anatomical near/far legs exchanged while both arms move contralaterally through each half-cycle and
+  exchange equally high endpoint poses
 - exact whole-frame left/right running mirrors with preserved temporal order and leg shading
 - the actual renderer contract: columns `0→7` with no skipping, `120 ms` for frames 0–6,
   a `220 ms` terminal hold, and a `1060 ms` cycle
 - neutral-action eye-depth range of `9.307 px`, per-run-frame eye-depth range of `0.500 px`, and
   idle/run contact heights of `198/197 px`
-- stable run head/body anchors with `1.000/2.000 px` horizontal/vertical source-cell ranges
-- rear/front cuff travel and opposite-pose travel of `28.951/18.895 px`
-- monotonic rear-arm projection `0→0.201→0.512→0.716→1` and front-arm projection
-  `0→0.340→0.703→0.943→1`, followed by monotonic return
-- bounded adjacent cuff movement of `1.570–5.416 px` at the actual display size, with a
-  contralateral half-cycle cosine of `-0.227`
-- adjacent run silhouette IoU of `0.832–0.884` and a maximum warm-leg span of `57 px`
+- stable run head/body anchors with `2.000/2.500 px` horizontal/vertical source-cell ranges
+- body-relative rear/front vertical cuff travel of `22.609/18.147 px`, with matched opposite endpoint
+  height separations of `17.423/17.942 px`
+- monotonic rear-arm projection `0→0.134→0.451→0.737→1` and front-arm projection
+  `0→0.321→0.709→0.945→1`, followed by monotonic return
+- bounded adjacent cuff movement of `1.545–8.729 px` at the actual display size, with a
+  contralateral half-cycle cosine of `-0.731`
+- adjacent run silhouette IoU of `0.817–0.895` and a maximum warm-leg span of `57 px`
 - zero cool purple/blue pixels in every running-leg region
 - jump eye spacing of `18.040–18.860 px` against idle `18.491 px`, with upright jump button spacing
   of `13.000/11.821 px` against idle `13.443 px`

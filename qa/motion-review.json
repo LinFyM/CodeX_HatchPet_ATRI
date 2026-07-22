@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "atlasSha256": "754dbfd9c79f4680da39292fd9790f49ffb952f931156ecaafc45afda267bec8",
+  "atlasSha256": "8f36d0b441ad36fa04b3356d98e49ff89ca26859685fc839b988c10b8c475b99",
   "reviewDate": "2026-07-16",
   "reviewedActions": [
     "idle",
@@ -28,7 +28,7 @@
   "findings": {
     "model": "cross-action eye/head scale and planted height use one canonical chibi proportion; no oversized running head",
     "palette": "ash-silver/blonde hair has no purple or chroma-key pockets; coral-magenta is reserved for the eyes",
-    "running": "compact contact/load/pass/short-flight legs with monotonic contralateral cuff trajectories, bounded adjacent motion, subtle body bob, warm near/far shading, and an exact whole-frame left mirror",
+    "running": "compact contact/load/pass/short-flight legs with balanced contralateral high/low arm exchange, bounded adjacent motion, subtle body bob, warm near/far shading, and an exact whole-frame left mirror",
     "jump": "idle-matched head and torso proportions with crouch, grounded extension, a visibly rising vertical apex tuck under the pelvis, feet-down touchdown, and crouched absorption",
     "wave": "same raised open hand in all frames; no finger-sign teleport",
     "failed": "surprise to head droop to recovery with both arms retained",
